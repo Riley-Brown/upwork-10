@@ -23,7 +23,7 @@ body {
   max-width: 866px;
   width: 90%;
   margin: auto;
-  border: 1px solid red;
+  /* border: 1px solid red; */
 }
 
 .fullscreen-landing h1 {
@@ -34,11 +34,11 @@ body {
   font-stretch: normal;
   line-height: normal;
   letter-spacing: 1px;
-  border: 1px solid red;
+  /* border: 1px solid red; */
 }
 
 .fullscreen-landing p {
-  border: 1px solid red;
+  /* border: 1px solid red; */
   font-family: Chaparral;
   font-size: 1.6875rem;
   font-weight: 300;

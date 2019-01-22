@@ -11,19 +11,10 @@ let imgDiv = document.querySelector('.image-array')
 landingH2.addEventListener('mouseover', carouselOnHover)
 
 
-
-
-
-// images.forEach(image => {
-//   document.querySelector('.image-array').src = image
-// })
-
-
 let index = 0;
-let isPaused = false;
+
 
 function carouselOnHover() {
-  isPaused = false;
 
   // sets img tag in carousel div to block
   imgDiv.style.display = 'block';
@@ -31,13 +22,12 @@ function carouselOnHover() {
   // sets first initial image on hover
   document.querySelector('.image-array').src = images[index]
 
-
   /* ===== interval to increase image index ===== */
   let int = setInterval(function () {
     console.log(index)
     index++
 
-    if (!isPaused && index >= images.length) {
+    if (index >= images.length) {
       index = 0
     }
 
@@ -46,9 +36,8 @@ function carouselOnHover() {
   }, 1000)
   /* ===== END OF INTERVAL ===== */
 
-  // event on mouse leave to stop int and hide image carousel
+  // event leave event to clear interval and hide image carousel
   landingH2.addEventListener('mouseleave', function () {
-    isPaused = true;
     index = 0;
     clearInterval(int)
     imgDiv.style.display = 'none';
