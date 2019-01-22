@@ -3,16 +3,20 @@
   src: url('../fonts/Chaparral\ Pro\ Light.otf');
 }
 
+@font-face {
+  font-family: Tungsten;
+  src: url('../fonts/Tungsten\ Rounded\ SemiBold.otf');
+}
+
 * {
   box-sizing: border-box;
-
+  margin: 0;
+  padding: 0;
 }
 
 body {
   background: #000;
   color: #fff;
-  /* font-family: Chaparral; */
-
 }
 
 .fullscreen-landing {
@@ -28,12 +32,15 @@ body {
 
 .fullscreen-landing h1 {
   color: #9e673e;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   font-weight: 600;
   font-style: normal;
   font-stretch: normal;
   line-height: normal;
   letter-spacing: 1px;
+  font-family: Tungsten;
+  text-transform: uppercase;
+  margin-bottom: 13px;
   /* border: 1px solid red; */
 }
 
@@ -46,12 +53,12 @@ body {
   font-stretch: normal;
   line-height: 1.48;
   letter-spacing: normal;
-  color: #ffffff;
+  margin-bottom: 50px;
 }
 
 .fullscreen-landing h2 {
   /* font-size: 6.25rem; change when right font */
-  font-size: 3.3rem;
+  font-size: 6.25rem;
   font-weight: 600;
   font-style: normal;
   font-stretch: normal;
@@ -59,6 +66,7 @@ body {
   letter-spacing: normal;
   text-transform: uppercase;
   cursor: pointer;
+  font-family: Tungsten;
 }
 
 .image-carousel {
