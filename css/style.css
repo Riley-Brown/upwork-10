@@ -57,7 +57,6 @@ body {
 }
 
 .fullscreen-landing h2 {
-  /* font-size: 6.25rem; change when right font */
   font-size: 6.25rem;
   font-weight: 600;
   font-style: normal;
@@ -76,5 +75,23 @@ body {
   left: 0;
   right: 0;
   z-index: -1000;
-  /* display: none; */
+}
+
+.image-array {
+  width: 100%;
+  object-fit: cover;
+  /* height: 0; */
+  overflow: hidden;
+  /* opacity: 0; */
+  /* transition: height 350ms ease-in-out, opacity 400ms ease-in-out; */
+  display: none;
+
+}
+
+/* class to animate fullscreen image carousel in and out */
+.is-visible {
+  /* display: block;
+  height: auto;
+  opacity: 1; */
+
 }

@@ -2,7 +2,7 @@
 const landingH2 = document.querySelector('.fullscreen-landing h2');
 
 // image carousel array
-const images = ['../img/img-1.jpeg', '../img/img-2.jpeg', '../img/img-3.jpeg']
+const images = ['img/img-1.jpeg', 'img/img-2.jpeg', 'img/img-3.jpeg'];
 
 // image tag inside image carousel div
 let imgDiv = document.querySelector('.image-array')
@@ -17,7 +17,9 @@ let index = 0;
 function carouselOnHover() {
 
   // sets img tag in carousel div to block
-  imgDiv.style.display = 'block';
+  // imgDiv.style.display = 'block';
+  imgDiv.classList.add('is-visible');
+  $('.image-array').fadeIn();
 
   // sets first initial image on hover
   document.querySelector('.image-array').src = images[index]
@@ -33,14 +35,16 @@ function carouselOnHover() {
 
     imgDiv.src = images[index]
 
-  }, 1000)
+  }, 700)
   /* ===== END OF INTERVAL ===== */
 
   // event leave event to clear interval and hide image carousel
   landingH2.addEventListener('mouseleave', function () {
     index = 0;
     clearInterval(int)
-    imgDiv.style.display = 'none';
+    // imgDiv.style.display = 'none';
+    imgDiv.classList.remove('is-visible');
+    $('.image-array').fadeOut();
   })
 
 }
