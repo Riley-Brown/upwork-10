@@ -1,3 +1,4 @@
+/* imports for fonts */
 @font-face {
   font-family: Chaparral;
   src: url('../fonts/Chaparral\ Pro\ Light.otf');
@@ -8,6 +9,7 @@
   src: url('../fonts/Tungsten\ Rounded\ SemiBold.otf');
 }
 
+/* global styles */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -17,20 +19,20 @@
 body {
   background: #000;
   color: #fff;
+
 }
 
 /* menu popup styles */
-
-
 .menu-popup {
   min-height: 100vh;
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9));
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
   display: none;
   align-items: flex-end;
+  z-index: 2;
 }
 
 .menu-popup .menu-popup-content {
@@ -40,6 +42,7 @@ body {
   width: 90%;
   margin: 0 auto;
   margin-bottom: 4vh;
+
 
 }
 
@@ -67,6 +70,29 @@ body {
 
 }
 
+.menu-popup a:hover {
+  color: #9e673e;
+}
+
+/* image carousel on  landing h2 hover styles */
+.image-carousel {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: -1000;
+}
+
+.image-array {
+  width: 100%;
+  object-fit: cover;
+  overflow: hidden;
+  display: none;
+
+}
+
+/* home screen landing styles */
 .fullscreen-landing {
   display: flex;
   justify-content: center;
@@ -75,13 +101,7 @@ body {
   max-width: 866px;
   width: 90%;
   margin: auto;
-  /* border: 1px solid red; */
-  /* filter: blur(10px); */
-}
 
-/* class to add when menu open to blue background */
-.fullscreen-landing-blur {
-  filter: blur(10px);
 }
 
 .fullscreen-landing h1 {
@@ -95,11 +115,10 @@ body {
   font-family: Tungsten;
   text-transform: uppercase;
   margin-bottom: 13px;
-  /* border: 1px solid red; */
+
 }
 
 .fullscreen-landing p {
-  /* border: 1px solid red; */
   font-family: Chaparral;
   font-size: 1.6875rem;
   font-weight: 300;
@@ -122,19 +141,7 @@ body {
   font-family: Tungsten;
 }
 
-.image-carousel {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: -1000;
-}
-
-.image-array {
-  width: 100%;
-  object-fit: cover;
-  overflow: hidden;
-  display: none;
-
+/* adds class when menu open to blur landing content */
+.fullscreen-landing-blur {
+  filter: blur(13px);
 }
