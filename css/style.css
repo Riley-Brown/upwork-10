@@ -19,15 +19,69 @@ body {
   color: #fff;
 }
 
+/* menu popup styles */
+
+
+.menu-popup {
+  min-height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9));
+  display: none;
+  align-items: flex-end;
+}
+
+.menu-popup .menu-popup-content {
+  display: flex;
+  flex-direction: column;
+  max-width: 1023px;
+  width: 90%;
+  margin: 0 auto;
+  margin-bottom: 4vh;
+
+}
+
+.menu-popup .gesture-emoji {
+  position: absolute;
+  right: 50px;
+  top: 50px;
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
+
+}
+
+.menu-popup a {
+  color: #fff;
+  font-size: 6.25rem;
+  text-decoration: none;
+  font-family: Tungsten;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.2;
+  letter-spacing: normal;
+  text-transform: uppercase;
+
+}
+
 .fullscreen-landing {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  height: 100vh;
+  min-height: 100vh;
   max-width: 866px;
   width: 90%;
   margin: auto;
   /* border: 1px solid red; */
+  /* filter: blur(10px); */
+}
+
+/* class to add when menu open to blue background */
+.fullscreen-landing-blur {
+  filter: blur(10px);
 }
 
 .fullscreen-landing h1 {
@@ -80,18 +134,7 @@ body {
 .image-array {
   width: 100%;
   object-fit: cover;
-  /* height: 0; */
   overflow: hidden;
-  /* opacity: 0; */
-  /* transition: height 350ms ease-in-out, opacity 400ms ease-in-out; */
   display: none;
-
-}
-
-/* class to animate fullscreen image carousel in and out */
-.is-visible {
-  /* display: block;
-  height: auto;
-  opacity: 1; */
 
 }
