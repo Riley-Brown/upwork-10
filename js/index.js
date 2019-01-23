@@ -58,12 +58,18 @@ landingH2.addEventListener('click', openMenu);
 // event to close menu on emoji click
 $('.gesture-emoji').click(function () {
   $('.menu-popup').fadeOut();
+  $('.fullscreen-landing').removeClass('fullscreen-landing-blur');
 })
 
 // handles menu open
 function openMenu() {
+  // fades in menu
   $('.menu-popup')
     .css("display", "flex")
     .hide()
     .fadeIn();
+
+  // adds class to blur landing content
+  $('.fullscreen-landing').addClass('fullscreen-landing-blur');
+
 }
