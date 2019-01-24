@@ -144,18 +144,18 @@
 /* body style for case study page */
 .case-study {
   background: #161616;
+  font-family: Tungsten;
 }
 
 .case-study header {
   min-height: 75vh;
   background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
     url("../img/img-1.jpeg");
-  font-family: Tungsten;
+  background-size: cover;
   display: flex;
 }
 .case-study .header-content {
   max-width: 662px;
-  border: 1px solid red;
 }
 .case-study .header-content h1 {
   font-size: 6.25rem;
@@ -181,4 +181,97 @@
   width: 80%;
   display: flex;
   align-items: center;
+}
+
+/* visual designer section */
+.case-study .visual-designer {
+  padding: 100px 0;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 80%;
+  /* border: 1px solid red; */
+}
+
+.case-study .visual-designer h3 {
+  color: #03d3d3;
+  font-size: 1.5rem;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+}
+
+.case-study .visual-designer p {
+  font-size: 1.6875rem;
+  font-weight: 300;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.48;
+  letter-spacing: normal;
+  font-family: Chaparral;
+  color: #fff;
+  max-width: 877px;
+  margin-bottom: 60px;
+}
+
+.case-study .visual-designer img {
+  width: 100%;
+}
+
+/* two people image section  */
+.case-study .two-people img {
+  width: 100%;
+  height: 60vh;
+  object-fit: cover;
+}
+.case-study .nba {
+  padding: 100px 0;
+  max-width: 1400px;
+  width: 80%;
+  margin: auto;
+}
+.case-study .nba img {
+  width: 100%;
+}
+
+/* footer */
+.case-study footer {
+  padding: 60px 0 115px;
+  background: #000;
+}
+.case-study .footer-content {
+  width: 80%;
+  margin: auto;
+  max-width: 1400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.case-study .footer-content a {
+  font-size: 4.5rem;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.04;
+  letter-spacing: normal;
+  text-align: center;
+  color: #fff;
+}
+
+.case-study .footer-content a:nth-of-type(1) {
+  font-size: 1.5rem;
+  color: #03d3d3;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: 2px;
+  text-align: center;
+  margin-bottom: 80px;
 }
