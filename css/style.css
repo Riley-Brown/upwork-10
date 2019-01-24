@@ -1,12 +1,12 @@
 /* imports for fonts */
 @font-face {
   font-family: Chaparral;
-  src: url('../fonts/Chaparral\ Pro\ Light.otf');
+  src: url("../fonts/Chaparral\ Pro\ Light.otf");
 }
 
 @font-face {
   font-family: Tungsten;
-  src: url('../fonts/Tungsten\ Rounded\ SemiBold.otf');
+  src: url("../fonts/Tungsten\ Rounded\ SemiBold.otf");
 }
 
 /* global styles */
@@ -16,10 +16,10 @@
   padding: 0;
 }
 
-body {
+/* body style for index page */
+#index {
   background: #000;
   color: #fff;
-
 }
 
 /* menu popup styles */
@@ -42,8 +42,6 @@ body {
   width: 90%;
   margin: 0 auto;
   margin-bottom: 4vh;
-
-
 }
 
 .menu-popup .gesture-emoji {
@@ -53,7 +51,6 @@ body {
   width: 100px;
   height: 100px;
   cursor: pointer;
-
 }
 
 .menu-popup a {
@@ -67,7 +64,6 @@ body {
   line-height: 1.2;
   letter-spacing: normal;
   text-transform: uppercase;
-
 }
 
 .menu-popup a:hover {
@@ -89,7 +85,6 @@ body {
   object-fit: cover;
   overflow: hidden;
   display: none;
-
 }
 
 /* home screen landing styles */
@@ -101,7 +96,6 @@ body {
   max-width: 866px;
   width: 90%;
   margin: auto;
-
 }
 
 .fullscreen-landing h1 {
@@ -115,7 +109,6 @@ body {
   font-family: Tungsten;
   text-transform: uppercase;
   margin-bottom: 13px;
-
 }
 
 .fullscreen-landing p {
@@ -144,4 +137,48 @@ body {
 /* adds class when menu open to blur landing content */
 .fullscreen-landing-blur {
   filter: blur(13px);
+}
+
+/* styles for case study page */
+
+/* body style for case study page */
+.case-study {
+  background: #161616;
+}
+
+.case-study header {
+  min-height: 75vh;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url("../img/img-1.jpeg");
+  font-family: Tungsten;
+  display: flex;
+}
+.case-study .header-content {
+  max-width: 662px;
+  border: 1px solid red;
+}
+.case-study .header-content h1 {
+  font-size: 6.25rem;
+  color: #fff;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1;
+  letter-spacing: normal;
+}
+.case-study .header-content h2 {
+  font-size: 1.5rem;
+  color: #03d3d3;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: 2px;
+}
+.case-study .header-content-wrapper {
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 80%;
+  display: flex;
+  align-items: center;
 }
