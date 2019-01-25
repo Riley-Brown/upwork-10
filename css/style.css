@@ -151,18 +151,66 @@ a {
 .fullscreen-landing-blur {
   filter: blur(13px);
 }
+
 /* mobile style for index page */
-.fullscreen-landing {
-  /* height: auto; */
+@media (max-width: 800px) {
+  .fullscreen-landing h1 {
+    font-size: 1.3rem;
+  }
+  .fullscreen-landing p {
+    font-size: 1.4rem;
+    margin-bottom: 30px;
+  }
+  .fullscreen-landing h2 {
+    font-size: 5rem;
+  }
 }
-.fullscreen-landing h1 {
-  font-size: 1.3rem;
+@media (max-width: 600px) {
+  .fullscreen-landing h2 {
+    font-size: 4rem;
+  }
+  .fullscreen-landing p {
+    margin-bottom: 20px;
+  }
 }
-.fullscreen-landing p {
-  font-size: 1.4rem;
+
+@media (max-width: 500px) {
+  .fullscreen-landing h1 {
+    font-size: 1.2rem;
+  }
+  .fullscreen-landing p {
+    font-size: 1.3rem;
+    margin-bottom: 30px;
+  }
+  .fullscreen-landing h2 {
+    font-size: 4rem;
+  }
 }
-.fullscreen-landing h2 {
-  font-size: 5rem;
+
+@media (max-width: 390px) {
+  .fullscreen-landing h1 {
+    font-size: 1.1rem;
+  }
+  .fullscreen-landing p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+  }
+  .fullscreen-landing h2 {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .fullscreen-landing h1 {
+    font-size: 1rem;
+  }
+  .fullscreen-landing p {
+    font-size: 1.05rem;
+    margin-bottom: 30px;
+  }
+  .fullscreen-landing h2 {
+    font-size: 2rem;
+  }
 }
 
 /* styles for case study page */
@@ -307,6 +355,66 @@ a {
   margin-bottom: 80px;
 }
 
+/* mobile styles for case */
+@media (max-width: 800px) {
+  .case-study .header-content h1 {
+    font-size: 5rem;
+  }
+  .case-study .visual-designer {
+    padding: 70px 0;
+  }
+  .case-study .visual-designer p {
+    margin-bottom: 40px;
+  }
+  .case-study .nba {
+    padding: 70px 0;
+  }
+  .case-study footer {
+    padding: 40px 0 80px;
+  }
+  .case-study .footer-content a:nth-of-type(1) {
+    margin-bottom: 50px;
+  }
+}
+
+@media (max-width: 570px) {
+  .case-study .header-content-wrapper {
+    width: 90%;
+  }
+  .case-study .header-content h1 {
+    font-size: 4rem;
+  }
+  .case-study .visual-designer h3 {
+    font-size: 1.3rem;
+  }
+  .case-study .visual-designer {
+    padding: 50px 0;
+    width: 90%;
+  }
+  .case-study .visual-designer p {
+    margin-bottom: 30px;
+    font-size: 1.45rem;
+  }
+  .case-study .nba {
+    padding: 50px 0;
+    width: 90%;
+  }
+  .case-study footer {
+    padding: 30px 0 60px;
+  }
+  .case-study footer .footer-content {
+    width: 90%;
+  }
+  .case-study .footer-content a {
+    font-size: 3.5rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .case-study .header-content h1 {
+    font-size: 3.35rem;
+  }
+}
 /* about page styles */
 .about {
   background: #161616;
