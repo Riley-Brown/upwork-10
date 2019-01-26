@@ -158,6 +158,12 @@ a {
   cursor: pointer;
   font-family: Tungsten;
   margin-right: 25px;
+  margin-bottom: 20px !important;
+  display: inline-block;
+}
+.fullscreen-landing div span a {
+  text-decoration: none;
+  color: #fff;
 }
 
 .fullscreen-landing div span:nth-of-type(1) {
@@ -180,10 +186,15 @@ a {
   .fullscreen-landing h2 {
     font-size: 5rem;
   }
+  .fullscreen-landing div span {
+    font-size: 5rem;
+    margin-right: 15px;
+  }
 }
-@media (max-width: 600px) {
-  .fullscreen-landing h2 {
+@media (max-width: 620px) {
+  .fullscreen-landing div span {
     font-size: 4rem;
+    margin-right: 10px;
   }
   .fullscreen-landing p {
     margin-bottom: 20px;
@@ -198,7 +209,7 @@ a {
     font-size: 1.3rem;
     margin-bottom: 30px;
   }
-  .fullscreen-landing h2 {
+  .fullscreen-landing div span {
     font-size: 4rem;
   }
 }
@@ -211,7 +222,7 @@ a {
     font-size: 1.2rem;
     margin-bottom: 30px;
   }
-  .fullscreen-landing h2 {
+  .fullscreen-landing div span {
     font-size: 3rem;
   }
 }
@@ -224,7 +235,7 @@ a {
     font-size: 1.05rem;
     margin-bottom: 30px;
   }
-  .fullscreen-landing h2 {
+  .fullscreen-landing div span {
     font-size: 2rem;
   }
 }
@@ -480,9 +491,11 @@ a {
   display: flex;
   flex-wrap: wrap;
   margin-top: 50px;
+  /* justify-content: center; */
 }
 .about .jobs .job {
-  min-width: 427px;
+  /* min-width: 427px; */
+  width: 50%;
 }
 .about .jobs .job span {
   font-family: Chaparral;
@@ -536,4 +549,19 @@ a {
   font-size: 1.5rem;
   color: #9e673e;
   margin-bottom: 80px;
+}
+
+/* mobile styles for about */
+@media (max-width: 800px) {
+  .about .about-info {
+    width: 90%;
+    padding: 70px 0;
+  }
+}
+
+@media (max-width: 680px) {
+  .about .jobs .job {
+    /* min-width: 427px; */
+    width: 100%;
+  }
 }
