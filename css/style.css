@@ -93,6 +93,7 @@ a {
   left: 0;
   right: 0;
   z-index: -1000;
+  display: none;
 }
 
 .image-array {
@@ -100,7 +101,7 @@ a {
   min-height: 100vh;
   object-fit: cover;
   overflow: hidden;
-  display: none;
+  /* display: none; */
 }
 
 /* home screen landing styles */
@@ -136,7 +137,7 @@ a {
   margin-bottom: 50px;
 }
 
-.fullscreen-landing h2 {
+/* .fullscreen-landing h2 {
   font-size: 6.25rem;
   font-weight: 600;
   font-style: normal;
@@ -145,8 +146,23 @@ a {
   letter-spacing: normal;
   text-transform: uppercase;
   cursor: pointer;
+} */
+.fullscreen-landing div span {
+  font-size: 6.25rem;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-family: Tungsten;
+  margin-right: 25px;
 }
 
+.fullscreen-landing div span:nth-of-type(1) {
+  border-bottom: 2px solid #9e673e;
+}
 /* adds class when menu open to blur landing content */
 .fullscreen-landing-blur {
   filter: blur(13px);
