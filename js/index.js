@@ -74,7 +74,8 @@ if (document.querySelectorAll('.fullscreen-landing div span').length > 0) {
   });
 
   // handles menu open
-  function openMenu() {
+  function openMenu(e) {
+
     // fades in menu
     $('.menu-popup')
       .css("display", "flex")
@@ -83,6 +84,13 @@ if (document.querySelectorAll('.fullscreen-landing div span').length > 0) {
 
     // adds class to blur landing content
     $('.fullscreen-landing').addClass('fullscreen-landing-blur');
+
+    // adds click to body to close menu
+    e.stopPropagation();
+    $('body').on('click', function () {
+      $('.menu-popup').fadeOut();
+      $('.fullscreen-landing').removeClass('fullscreen-landing-blur');
+    })
   };
 }
 
