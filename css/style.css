@@ -41,7 +41,7 @@ a {
 /* menu popup styles */
 .menu-popup {
   min-height: 100vh;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
@@ -68,7 +68,7 @@ a {
   }
 }
 
-.menu-popup .gesture-emoji {
+.gesture-emoji {
   position: absolute;
   right: 5%;
   top: 5%;
@@ -77,7 +77,7 @@ a {
   cursor: pointer;
   transition: 300ms;
 }
-.menu-popup .gesture-emoji:hover {
+.gesture-emoji:hover {
   transform: scale(1.1);
   transition: 300ms;
 }
@@ -96,6 +96,9 @@ a {
 
 .menu-popup a:hover {
   color: #9e673e;
+}
+.blur-content {
+  filter: blur(14px);
 }
 
 /* image carousel on  landing h2 hover styles */
