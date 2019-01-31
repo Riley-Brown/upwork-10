@@ -118,13 +118,21 @@ if (document.querySelectorAll('.emoji-open').length > 0) {
   });
 }
 
+let carouselLength = document.querySelectorAll(
+  '.carousel .carousel-content img'
+).length;
+
 window.addEventListener('DOMContentLoaded', function() {
-  initialCarouselWidth = window.innerWidth * 3;
+  initialCarouselWidth = window.innerWidth * (carouselLength - 2);
   document.querySelector(
     '.carousel-content'
   ).style.width = `${initialCarouselWidth}px`;
   document.querySelector('body').style.overflowX = 'hidden';
   console.log(initialCarouselWidth);
+
+  document.querySelector(
+    '.carousel-content'
+  ).style.transform = `translateX(${-window.innerWidth}px)`;
 });
 
 window.addEventListener('resize', function() {
@@ -150,12 +158,9 @@ window.addEventListener('resize', function() {
 // ).style.transform = `translateX(-${carouselIntWidth}px)`;
 
 // handles normal carousel transition inverval calculation
-var count = 0;
+var count = window.innerWidth;
 var counterIncrement = window.innerWidth;
 var counter = setInterval(timer, 3000);
-let carouselLength = document.querySelectorAll(
-  '.carousel .carousel-content img'
-).length;
 
 function timer() {
   count = count + counterIncrement;
@@ -164,12 +169,12 @@ function timer() {
     '.carousel-content'
   ).style.transform = `translateX(-${count}px)`;
 
-  if (count >= (window.innerWidth - 1) * (carouselLength - 1)) {
-    count = 0;
+  if (count >= (window.innerWidth - 2) * (carouselLength - 1)) {
+    count = window.innerWidth;
     // return count;
     document.querySelector(
       '.carousel-content'
-    ).style.transform = `translateX(0px)`;
+    ).style.transform = `translateX(${-window.innerWidth}px)`;
   }
 }
 setInterval(function() {
