@@ -10,17 +10,16 @@ if (document.querySelectorAll('.fullscreen-landing div span').length > 0) {
   let hoverElements = document.querySelectorAll('.fullscreen-landing div span');
 
   // adds event for 2nd span
-  hoverElements[1].addEventListener('mouseover', function () {
+  hoverElements[1].addEventListener('mouseover', function() {
     onHover(hoverElements[1], images, 'img', 700);
   });
 
   // event for 1st span
-  hoverElements[0].addEventListener('mouseover', function () {
+  hoverElements[0].addEventListener('mouseover', function() {
     onHover(hoverElements[0], textVidArr, 'video', 3000);
   });
 
   function onHover(element, imgArr, type, length) {
-
     let index = 0;
 
     // Fades in image carousel with jQuery
@@ -28,57 +27,55 @@ if (document.querySelectorAll('.fullscreen-landing div span').length > 0) {
 
     // checks element type passed into function
     if (type == 'img') {
-      $('.image-carousel')
-        .html(`<img src=${imgArr[index]} alt="portfolio" class="image-array">`);
+      $('.image-carousel').html(
+        `<img src=${imgArr[index]} alt="portfolio" class="image-array">`
+      );
     } else if (type == 'video') {
-      $('.image-carousel')
-        .html(`<video src=${imgArr[index]} class="image-array" autoplay muted loop></video>`);
+      $('.image-carousel').html(
+        `<video src=${
+          imgArr[index]
+        } class="image-array" autoplay muted loop></video>`
+      );
     }
 
-    // interval to increase array index 
-    let int = setInterval(function () {
-
+    // interval to increase array index
+    let int = setInterval(function() {
       // increase value every interval
-      index++
+      index++;
 
       // resets index to 0 if longer than array length
       if (index >= imgArr.length) {
-        index = 0
+        index = 0;
       }
 
       // sets new src every interval
-      document.querySelector('.image-array').src = imgArr[index]
-
-    }, length) // dynamic length based on value passed in
+      document.querySelector('.image-array').src = imgArr[index];
+    }, length); // dynamic length based on value passed in
 
     // mouse leave event to clear interval and hide carousel
-    element.addEventListener('mouseleave', function () {
-
+    element.addEventListener('mouseleave', function() {
       index = 0;
-      clearInterval(int)
+      clearInterval(int);
 
-      // Fade out carousel with jQuery 
+      // Fade out carousel with jQuery
       $('.image-carousel').fadeOut(10);
     });
-
-  };
-
+  }
 
   // event to open menu on Work span click
   hoverElements[1].addEventListener('click', openMenu);
 
   // event to close menu on emoji click
-  $('.gesture-emoji').click(function () {
+  $('.gesture-emoji').click(function() {
     $('.menu-popup').fadeOut();
     $('.fullscreen-landing').removeClass('fullscreen-landing-blur');
   });
 
   // handles menu open
   function openMenu(e) {
-
     // fades in menu
     $('.menu-popup')
-      .css("display", "flex")
+      .css('display', 'flex')
       .hide()
       .fadeIn();
 
@@ -87,21 +84,18 @@ if (document.querySelectorAll('.fullscreen-landing div span').length > 0) {
 
     // adds click to body to close menu
     e.stopPropagation();
-    $('body').on('click', function () {
+    $('body').on('click', function() {
       $('.menu-popup').fadeOut();
       $('.fullscreen-landing').removeClass('fullscreen-landing-blur');
-    })
-  };
+    });
+  }
 }
-
-
-
 
 // event to open menu on emoji click for pages other than landing page
 if (document.querySelectorAll('.emoji-open').length > 0) {
-  $('.emoji-open').on('click', function (e) {
+  $('.emoji-open').on('click', function(e) {
     $('.menu-popup')
-      .css("display", "flex")
+      .css('display', 'flex')
       .hide()
       .fadeIn();
 
@@ -109,18 +103,107 @@ if (document.querySelectorAll('.emoji-open').length > 0) {
     $('section').addClass('fullscreen-landing-blur');
 
     e.stopPropagation();
-    $('body').on('click', function () {
+    $('body').on('click', function() {
       $('.menu-popup').fadeOut();
       $('header').removeClass('fullscreen-landing-blur');
       $('section').removeClass('fullscreen-landing-blur');
-    })
+    });
   });
 
-  $('.menu-popup .gesture-emoji').on('click', function () {
-    $('.menu-popup')
-      .fadeOut();
+  $('.menu-popup .gesture-emoji').on('click', function() {
+    $('.menu-popup').fadeOut();
 
     $('header').removeClass('fullscreen-landing-blur');
     $('section').removeClass('fullscreen-landing-blur');
-  })
+  });
 }
+
+window.addEventListener('DOMContentLoaded', function() {
+  initialCarouselWidth = window.innerWidth * 3;
+  document.querySelector(
+    '.carousel-content'
+  ).style.width = `${initialCarouselWidth}px`;
+  document.querySelector('body').style.overflowX = 'hidden';
+  console.log(initialCarouselWidth);
+});
+
+window.addEventListener('resize', function() {
+  // window width multiplied by number of photos
+  let carouselWidth = window.innerWidth * 3;
+  document.querySelector(
+    '.carousel-content'
+  ).style.width = `${carouselWidth}px`;
+
+  console.log(carouselWidth);
+});
+
+// let carouselIntWidth = window.innerWidth;
+
+// setInterval(function() {
+//   widthTracker = carouselIntWidth * 2;
+
+//   console.log(widthTracker);
+// }, 1000);
+
+// document.querySelector(
+//   '.carousel'
+// ).style.transform = `translateX(-${carouselIntWidth}px)`;
+
+// handles normal carousel transition inverval calculation
+var count = 0;
+var counterIncrement = window.innerWidth;
+var counter = setInterval(timer, 3000);
+let carouselLength = document.querySelectorAll(
+  '.carousel .carousel-content img'
+).length;
+
+function timer() {
+  count = count + counterIncrement;
+  console.log('this is the count interval', count);
+  document.querySelector(
+    '.carousel-content'
+  ).style.transform = `translateX(-${count}px)`;
+
+  if (count >= (window.innerWidth - 1) * (carouselLength - 1)) {
+    count = 0;
+    // return count;
+    document.querySelector(
+      '.carousel-content'
+    ).style.transform = `translateX(0px)`;
+  }
+}
+setInterval(function() {
+  console.log(count);
+}, 100);
+
+// carousel control left
+$('.carousel-control-left').mouseenter(function() {
+  $('.carousel .carousel-content').css(
+    'transform',
+    `translateX(-${count - 100}px)`
+  );
+
+  console.log('this is the count hover', count);
+});
+
+$('.carousel-control-left').mouseleave(function() {
+  $('.carousel .carousel-content').css('transform', `translateX(-${count}px)`);
+
+  console.log('this is the count hover mouse leave', count);
+});
+
+// carousel control right
+$('.carousel-control-right').mouseenter(function() {
+  $('.carousel .carousel-content').css(
+    'transform',
+    `translateX(-${count + 100}px)`
+  );
+
+  console.log('this is the count hover', count);
+});
+
+$('.carousel-control-right').mouseleave(function() {
+  $('.carousel .carousel-content').css('transform', `translateX(-${count}px)`);
+
+  console.log('this is the count hover mouse leave', count);
+});
