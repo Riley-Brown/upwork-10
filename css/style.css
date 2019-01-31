@@ -1,12 +1,12 @@
 /* imports for fonts */
 @font-face {
   font-family: Chaparral;
-  src: url("../fonts/Chaparral\ Pro\ Light.otf");
+  src: url('../fonts/Chaparral\ Pro\ Light.otf');
 }
 
 @font-face {
   font-family: Tungsten;
-  src: url("../fonts/Tungsten\ Rounded\ SemiBold.otf");
+  src: url('../fonts/Tungsten\ Rounded\ SemiBold.otf');
 }
 
 /* global styles */
@@ -101,7 +101,44 @@ a {
   filter: blur(14px);
 }
 
-/* image carousel on  landing h2 hover styles */
+/* normal carousel NON HOVER styles */
+.carousel {
+  position: relative;
+}
+.carousel-content {
+  display: flex;
+  margin: 150px 0 70px;
+  transition: 500ms;
+  /* display: inline; */
+}
+
+.carousel-content img {
+  height: 110vh;
+  width: 100vw;
+  object-fit: cover;
+
+  /* position: absolute; */
+}
+.carousel .carousel-control-left {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 10%;
+  cursor: pointer;
+  z-index: 1;
+}
+.carousel .carousel-control-right {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 10%;
+  cursor: pointer;
+  z-index: 1;
+}
+
+/* carousel HOVER styles */
 .image-carousel {
   position: fixed;
   top: 0;
@@ -266,7 +303,7 @@ a {
 .case-study header {
   min-height: 75vh;
   background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-    url("../img/img-1.jpeg");
+    url('../img/img-1.jpeg');
   background-size: cover;
   display: flex;
 }
