@@ -5,18 +5,17 @@ const images = ['img/img-1.jpeg', 'img/img-2.jpeg', 'img/img-3.jpeg'];
 const textVidArr = ['video/placeholder-vid.mp4', 'video/placeholder-vid-2.mp4'];
 
 // all span tags on landing for hover event
-
 if (document.querySelectorAll('.fullscreen-landing div span').length > 0) {
   let hoverElements = document.querySelectorAll('.fullscreen-landing div span');
-
-  // adds event for 2nd span
-  hoverElements[1].addEventListener('mouseover', function () {
-    onHover(hoverElements[1], images, 'img', 700);
-  });
 
   // event for 1st span
   hoverElements[0].addEventListener('mouseover', function () {
     onHover(hoverElements[0], textVidArr, 'video', 3000);
+  });
+
+  // adds event for 2nd span
+  hoverElements[1].addEventListener('mouseover', function () {
+    onHover(hoverElements[1], images, 'img', 700);
   });
 
   function onHover(element, imgArr, type, length) {
@@ -118,8 +117,13 @@ if (document.querySelectorAll('.emoji-open').length > 0) {
   });
 }
 
+
 /* ===== Custom NON-Hover Carousel ===== */
+
 let carouselLength = document.querySelectorAll('.carousel .carousel-content img').length;
+
+// carousel content element
+let carouselContent = document.querySelector('.carousel .carousel-content')
 
 // handles normal carousel transition inverval calculation
 let count = window.innerWidth;
@@ -140,20 +144,19 @@ window.addEventListener('DOMContentLoaded', function () {
 });
 
 window.addEventListener('resize', function () {
-  // updates carousel width on window resize
+  // updates variable values based on window width
   counterIncrement = window.innerWidth;
   count = window.innerWidth
-  document.querySelector('.carousel-content').style.width = `${counterIncrement * carouselLength}px`;
-  document.querySelector('.carousel-content').style.transform = `translateX(${-counterIncrement}px)`;
-  console.log(counterIncrement)
+  carouselContent.style.width = `${counterIncrement * carouselLength}px`;
+  carouselContent.style.transform = `translateX(${-counterIncrement}px)`;
 });
 
 function timer() {
   count = count + counterIncrement;
-  document.querySelector('.carousel-content').style.transform = `translateX(-${count}px)`;
+  carouselContent.style.transform = `translateX(-${count}px)`;
   if (count >= (counterIncrement - 2) * (carouselLength - 1)) {
     count = counterIncrement;
-    document.querySelector('.carousel-content').style.transform = `translateX(${-counterIncrement}px)`;
+    carouselContent.style.transform = `translateX(${-counterIncrement}px)`;
   }
 }
 
@@ -187,7 +190,10 @@ $('.carousel-control-left').on('click', function () {
   clearInterval(counter);
 });
 
+
 /* ===== Carousel Control Right ===== */
+
+// mouse enter effect
 $('.carousel-control-right').mouseenter(function () {
   $('.carousel .carousel-content').css(
     'transform',
@@ -195,16 +201,15 @@ $('.carousel-control-right').mouseenter(function () {
   );
 
   clearInterval(counter);
-
-  // console.log('this is the count hover', count);
 });
 
+// mouse leave effect
 $('.carousel-control-right').mouseleave(function () {
   $('.carousel .carousel-content').css('transform', `translateX(-${count}px)`);
   counter = setInterval(timer, 3000);
 });
 
-// carousel right click
+// click to next img
 $('.carousel-control-right').on('click', function () {
   count = count + counterIncrement;
   $('.carousel .carousel-content').css('transform', `translateX(-${count}px)`);
