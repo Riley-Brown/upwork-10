@@ -118,6 +118,7 @@ if (document.querySelectorAll('.emoji-open').length > 0) {
   });
 }
 
+/* ===== Custom NON-Hover Carousel ===== */
 let carouselLength = document.querySelectorAll(
   '.carousel .carousel-content img'
 ).length;
@@ -135,27 +136,15 @@ window.addEventListener('DOMContentLoaded', function() {
   ).style.transform = `translateX(${-window.innerWidth}px)`;
 });
 
-window.addEventListener('resize', function() {
-  // window width multiplied by number of photos
-  let carouselWidth = window.innerWidth * 3;
-  document.querySelector(
-    '.carousel-content'
-  ).style.width = `${carouselWidth}px`;
+// window.addEventListener('resize', function() {
+//   // window width multiplied by number of photos - 2
+//   // let carouselWidth = window.innerWidth * 3;
+//   document.querySelector(
+//     '.carousel-content'
+//   ).style.width = `${carouselWidth}px`;
 
-  console.log(carouselWidth);
-});
-
-// let carouselIntWidth = window.innerWidth;
-
-// setInterval(function() {
-//   widthTracker = carouselIntWidth * 2;
-
-//   console.log(widthTracker);
-// }, 1000);
-
-// document.querySelector(
-//   '.carousel'
-// ).style.transform = `translateX(-${carouselIntWidth}px)`;
+//   console.log(carouselWidth);
+// });
 
 // handles normal carousel transition inverval calculation
 var count = window.innerWidth;
@@ -181,28 +170,32 @@ setInterval(function() {
   console.log(count);
 }, 100);
 
-// carousel control left
+/* ===== Carousel Control Left ===== */
 $('.carousel-control-left').mouseenter(function() {
   $('.carousel .carousel-content').css(
     'transform',
     `translateX(-${count - 100}px)`
   );
 
+  clearInterval(counter);
   console.log('this is the count hover', count);
 });
 
 $('.carousel-control-left').mouseleave(function() {
   $('.carousel .carousel-content').css('transform', `translateX(-${count}px)`);
 
+  counter = setInterval(timer, 3000);
   console.log('this is the count hover mouse leave', count);
 });
 
-// carousel control right
+/* ===== Carousel Control Right ===== */
 $('.carousel-control-right').mouseenter(function() {
   $('.carousel .carousel-content').css(
     'transform',
     `translateX(-${count + 100}px)`
   );
+
+  clearInterval(counter);
 
   console.log('this is the count hover', count);
 });
@@ -210,5 +203,6 @@ $('.carousel-control-right').mouseenter(function() {
 $('.carousel-control-right').mouseleave(function() {
   $('.carousel .carousel-content').css('transform', `translateX(-${count}px)`);
 
+  counter = setInterval(timer, 3000);
   console.log('this is the count hover mouse leave', count);
 });
