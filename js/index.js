@@ -10,12 +10,12 @@ if (document.querySelectorAll('.fullscreen-landing div span').length > 0) {
   let hoverElements = document.querySelectorAll('.fullscreen-landing div span');
 
   // adds event for 2nd span
-  hoverElements[1].addEventListener('mouseover', function() {
+  hoverElements[1].addEventListener('mouseover', function () {
     onHover(hoverElements[1], images, 'img', 700);
   });
 
   // event for 1st span
-  hoverElements[0].addEventListener('mouseover', function() {
+  hoverElements[0].addEventListener('mouseover', function () {
     onHover(hoverElements[0], textVidArr, 'video', 3000);
   });
 
@@ -39,7 +39,7 @@ if (document.querySelectorAll('.fullscreen-landing div span').length > 0) {
     }
 
     // interval to increase array index
-    let int = setInterval(function() {
+    let int = setInterval(function () {
       // increase value every interval
       index++;
 
@@ -53,7 +53,7 @@ if (document.querySelectorAll('.fullscreen-landing div span').length > 0) {
     }, length); // dynamic length based on value passed in
 
     // mouse leave event to clear interval and hide carousel
-    element.addEventListener('mouseleave', function() {
+    element.addEventListener('mouseleave', function () {
       index = 0;
       clearInterval(int);
 
@@ -66,7 +66,7 @@ if (document.querySelectorAll('.fullscreen-landing div span').length > 0) {
   hoverElements[1].addEventListener('click', openMenu);
 
   // event to close menu on emoji click
-  $('.gesture-emoji').click(function() {
+  $('.gesture-emoji').click(function () {
     $('.menu-popup').fadeOut();
     $('.fullscreen-landing').removeClass('fullscreen-landing-blur');
   });
@@ -84,7 +84,7 @@ if (document.querySelectorAll('.fullscreen-landing div span').length > 0) {
 
     // adds click to body to close menu
     e.stopPropagation();
-    $('body').on('click', function() {
+    $('body').on('click', function () {
       $('.menu-popup').fadeOut();
       $('.fullscreen-landing').removeClass('fullscreen-landing-blur');
     });
@@ -93,7 +93,7 @@ if (document.querySelectorAll('.fullscreen-landing div span').length > 0) {
 
 // event to open menu on emoji click for pages other than landing page
 if (document.querySelectorAll('.emoji-open').length > 0) {
-  $('.emoji-open').on('click', function(e) {
+  $('.emoji-open').on('click', function (e) {
     $('.menu-popup')
       .css('display', 'flex')
       .hide()
@@ -103,14 +103,14 @@ if (document.querySelectorAll('.emoji-open').length > 0) {
     $('section').addClass('fullscreen-landing-blur');
 
     e.stopPropagation();
-    $('body').on('click', function() {
+    $('body').on('click', function () {
       $('.menu-popup').fadeOut();
       $('header').removeClass('fullscreen-landing-blur');
       $('section').removeClass('fullscreen-landing-blur');
     });
   });
 
-  $('.menu-popup .gesture-emoji').on('click', function() {
+  $('.menu-popup .gesture-emoji').on('click', function () {
     $('.menu-popup').fadeOut();
 
     $('header').removeClass('fullscreen-landing-blur');
@@ -119,96 +119,76 @@ if (document.querySelectorAll('.emoji-open').length > 0) {
 }
 
 /* ===== Custom NON-Hover Carousel ===== */
-let carouselLength = document.querySelectorAll(
-  '.carousel .carousel-content img'
-).length;
-
-window.addEventListener('DOMContentLoaded', function() {
-  initialCarouselWidth = window.innerWidth * (carouselLength - 2);
-  document.querySelector(
-    '.carousel-content'
-  ).style.width = `${initialCarouselWidth}px`;
-  document.querySelector('body').style.overflowX = 'hidden';
-  console.log(initialCarouselWidth);
-
-  document.querySelector(
-    '.carousel-content'
-  ).style.transform = `translateX(${-window.innerWidth}px)`;
-});
-
-// window.addEventListener('resize', function() {
-//   // window width multiplied by number of photos - 2
-//   // let carouselWidth = window.innerWidth * 3;
-//   document.querySelector(
-//     '.carousel-content'
-//   ).style.width = `${carouselWidth}px`;
-
-//   console.log(carouselWidth);
-// });
+let carouselLength = document.querySelectorAll('.carousel .carousel-content img').length;
 
 // handles normal carousel transition inverval calculation
-var count = window.innerWidth;
-var counterIncrement = window.innerWidth;
-var counter = setInterval(timer, 3000);
+let count = window.innerWidth;
+let counterIncrement = window.innerWidth;
+let counter = setInterval(timer, 3000);
+
+window.addEventListener('DOMContentLoaded', function () {
+  initialCarouselWidth = window.innerWidth * (carouselLength - 2);
+
+  // sets initial width for carousel 
+  document.querySelector('.carousel-content').style.width = `${initialCarouselWidth}px`;
+
+  // hide body overflow for carousel
+  document.querySelector('body').style.overflowX = 'hidden';
+
+  // sets initial transform of carousel to start at index 1
+  document.querySelector('.carousel-content').style.transform = `translateX(${-window.innerWidth}px)`;
+});
+
+window.addEventListener('resize', function () {
+  // updates carousel width on window resize
+  counterIncrement = window.innerWidth;
+  count = window.innerWidth
+  document.querySelector('.carousel-content').style.width = `${counterIncrement * carouselLength}px`;
+  document.querySelector('.carousel-content').style.transform = `translateX(${-counterIncrement}px)`;
+  console.log(counterIncrement)
+});
 
 function timer() {
   count = count + counterIncrement;
-  console.log('this is the count interval', count);
-  document.querySelector(
-    '.carousel-content'
-  ).style.transform = `translateX(-${count}px)`;
-
-  if (count >= (window.innerWidth - 2) * (carouselLength - 1)) {
-    count = window.innerWidth;
-    // return count;
-    document.querySelector(
-      '.carousel-content'
-    ).style.transform = `translateX(${-window.innerWidth}px)`;
+  document.querySelector('.carousel-content').style.transform = `translateX(-${count}px)`;
+  if (count >= (counterIncrement - 2) * (carouselLength - 1)) {
+    count = counterIncrement;
+    document.querySelector('.carousel-content').style.transform = `translateX(${-counterIncrement}px)`;
   }
 }
 
 /* ===== Carousel Control Left ===== */
-$('.carousel-control-left').mouseenter(function() {
+$('.carousel-control-left').mouseenter(function () {
   $('.carousel .carousel-content').css(
     'transform',
     `translateX(-${count - 100}px)`
   );
 
   clearInterval(counter);
-  // console.log('this is the count hover', count);
 });
 
-$('.carousel-control-left').mouseleave(function() {
+$('.carousel-control-left').mouseleave(function () {
   $('.carousel .carousel-content').css('transform', `translateX(-${count}px)`);
-
   counter = setInterval(timer, 3000);
-  // console.log('this is the count hover mouse leave', count);
 });
 
 // carousel left click
-
-$('.carousel-control-left').on('click', function() {
+$('.carousel-control-left').on('click', function () {
   count = count - counterIncrement;
   $('.carousel .carousel-content').css('transform', `translateX(${-count}px)`);
-  if (count < window.innerWidth) {
+  if (count < counterIncrement) {
     count = counterIncrement * (carouselLength - 2);
     $('.carousel .carousel-content').css(
       'transform',
       `translateX(-${count}px)`
     );
-    console.log(
-      'left count is over',
-      count,
-      window.innerWidth,
-      counterIncrement * (carouselLength - 3)
-    );
   }
-  // console.log(-count, -window.innerWidth * (carouselLength - 1));
+
   clearInterval(counter);
 });
 
 /* ===== Carousel Control Right ===== */
-$('.carousel-control-right').mouseenter(function() {
+$('.carousel-control-right').mouseenter(function () {
   $('.carousel .carousel-content').css(
     'transform',
     `translateX(-${count + 100}px)`
@@ -219,25 +199,22 @@ $('.carousel-control-right').mouseenter(function() {
   // console.log('this is the count hover', count);
 });
 
-$('.carousel-control-right').mouseleave(function() {
+$('.carousel-control-right').mouseleave(function () {
   $('.carousel .carousel-content').css('transform', `translateX(-${count}px)`);
-
   counter = setInterval(timer, 3000);
-  // console.log('this is the count hover mouse leave', count);
 });
 
 // carousel right click
-$('.carousel-control-right').on('click', function() {
+$('.carousel-control-right').on('click', function () {
   count = count + counterIncrement;
   $('.carousel .carousel-content').css('transform', `translateX(-${count}px)`);
-  if (count >= window.innerWidth * (carouselLength - 1)) {
-    count = window.innerWidth;
+  if (count >= counterIncrement * (carouselLength - 1)) {
+    count = counterIncrement;
     $('.carousel .carousel-content').css(
       'transform',
       `translateX(-${count}px)`
     );
   }
-  // console.log(count);
 
   clearInterval(counter);
 });
