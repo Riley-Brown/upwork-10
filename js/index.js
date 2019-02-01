@@ -166,9 +166,6 @@ function timer() {
     ).style.transform = `translateX(${-window.innerWidth}px)`;
   }
 }
-setInterval(function() {
-  console.log(count);
-}, 100);
 
 /* ===== Carousel Control Left ===== */
 $('.carousel-control-left').mouseenter(function() {
@@ -178,14 +175,36 @@ $('.carousel-control-left').mouseenter(function() {
   );
 
   clearInterval(counter);
-  console.log('this is the count hover', count);
+  // console.log('this is the count hover', count);
 });
 
 $('.carousel-control-left').mouseleave(function() {
   $('.carousel .carousel-content').css('transform', `translateX(-${count}px)`);
 
   counter = setInterval(timer, 3000);
-  console.log('this is the count hover mouse leave', count);
+  // console.log('this is the count hover mouse leave', count);
+});
+
+// carousel left click
+
+$('.carousel-control-left').on('click', function() {
+  count = count - counterIncrement;
+  $('.carousel .carousel-content').css('transform', `translateX(${-count}px)`);
+  if (count < window.innerWidth) {
+    count = counterIncrement * (carouselLength - 2);
+    $('.carousel .carousel-content').css(
+      'transform',
+      `translateX(-${count}px)`
+    );
+    console.log(
+      'left count is over',
+      count,
+      window.innerWidth,
+      counterIncrement * (carouselLength - 3)
+    );
+  }
+  // console.log(-count, -window.innerWidth * (carouselLength - 1));
+  clearInterval(counter);
 });
 
 /* ===== Carousel Control Right ===== */
@@ -197,12 +216,28 @@ $('.carousel-control-right').mouseenter(function() {
 
   clearInterval(counter);
 
-  console.log('this is the count hover', count);
+  // console.log('this is the count hover', count);
 });
 
 $('.carousel-control-right').mouseleave(function() {
   $('.carousel .carousel-content').css('transform', `translateX(-${count}px)`);
 
   counter = setInterval(timer, 3000);
-  console.log('this is the count hover mouse leave', count);
+  // console.log('this is the count hover mouse leave', count);
+});
+
+// carousel right click
+$('.carousel-control-right').on('click', function() {
+  count = count + counterIncrement;
+  $('.carousel .carousel-content').css('transform', `translateX(-${count}px)`);
+  if (count >= window.innerWidth * (carouselLength - 1)) {
+    count = window.innerWidth;
+    $('.carousel .carousel-content').css(
+      'transform',
+      `translateX(-${count}px)`
+    );
+  }
+  // console.log(count);
+
+  clearInterval(counter);
 });
