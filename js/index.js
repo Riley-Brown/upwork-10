@@ -136,20 +136,32 @@ window.addEventListener('DOMContentLoaded', function () {
   // sets initial width for carousel 
   document.querySelector('.carousel-content').style.width = `${initialCarouselWidth}px`;
 
-  // hide body overflow for carousel
-  document.querySelector('body').style.overflowX = 'hidden';
-
   // sets initial transform of carousel to start at index 1
   document.querySelector('.carousel-content').style.transform = `translateX(${-window.innerWidth}px)`;
 });
 
-window.addEventListener('resize', function () {
-  // updates variable values based on window width
-  counterIncrement = window.innerWidth;
-  count = window.innerWidth
-  carouselContent.style.width = `${counterIncrement * carouselLength}px`;
-  carouselContent.style.transform = `translateX(${-counterIncrement}px)`;
-});
+// prevents mobile bugs
+if (window.innerWidth > 800) {
+  window.addEventListener('resize', function () {
+    // updates variable values based on window width
+    counterIncrement = window.innerWidth;
+    count = window.innerWidth
+    carouselContent.style.width = `${counterIncrement * carouselLength}px`;
+    carouselContent.style.transform = `translateX(${-counterIncrement}px)`;
+  });
+
+}
+
+// change image width for smaller screens
+if (window.innerWidth < 800) {
+  window.addEventListener('resize', function () {
+    document.querySelectorAll('.carousel-content img').forEach(img => {
+      img.style.height = window.innerHeight + 200 + 'px';
+      img.style.width = window.innerHeight + 'px';
+    })
+  })
+}
+
 
 function timer() {
   count = count + counterIncrement;
