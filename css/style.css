@@ -98,6 +98,18 @@ a {
   text-transform: uppercase;
 }
 
+@media(max-width: 1400px) {
+  .menu-popup a {
+    font-size: 4.5rem;
+  }
+
+  .menu-popup {
+
+    align-items: center;
+
+  }
+}
+
 .menu-popup a:hover {
   color: #9e673e;
 }
@@ -241,6 +253,7 @@ a {
 }
 
 /* mobile style for index page */
+
 @media (max-width: 800px) {
   .fullscreen-landing h1 {
     font-size: 1.3rem;
