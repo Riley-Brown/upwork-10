@@ -246,6 +246,11 @@ a {
     font-size: 1.3rem;
   }
 
+  .gesture-emoji {
+    width: 70px;
+    height: 70px;
+  }
+
   .fullscreen-landing p {
     font-size: 1.4rem;
     margin-bottom: 30px;
@@ -679,13 +684,13 @@ a {
   }
 
   .menu-popup a {
-    font-size: 5rem;
+    font-size: 4.5rem;
   }
 }
 
 @media (max-width: 520px) {
   .menu-popup a {
-    font-size: 4rem;
+    font-size: 3.5rem;
     display: inline;
   }
 
