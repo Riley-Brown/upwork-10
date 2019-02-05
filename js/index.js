@@ -5,8 +5,8 @@ const images = ['img/img-1.jpeg', 'img/img-2.jpeg', 'img/img-3.jpeg'];
 const textVidArr = ['video/placeholder-vid.mp4', 'video/placeholder-vid-2.mp4'];
 
 // all span tags on landing for hover event
-if (document.querySelectorAll('.fullscreen-landing div span').length > 0) {
-  let hoverElements = document.querySelectorAll('.fullscreen-landing div span');
+if (document.querySelectorAll('.hover-carousel').length > 0) {
+  let hoverElements = document.querySelectorAll('.hover-carousel span');
 
   // event for 1st span
   hoverElements[0].addEventListener('mouseover', function () {
@@ -22,15 +22,15 @@ if (document.querySelectorAll('.fullscreen-landing div span').length > 0) {
     let index = 0;
 
     // Fades in image carousel with jQuery
-    $('.image-carousel').fadeIn(400);
+    $('.image-carousel-hover').fadeIn(400);
 
     // checks element type passed into function
     if (type == 'img') {
-      $('.image-carousel').html(
+      $('.image-carousel-hover').html(
         `<img src=${imgArr[index]} alt="portfolio" class="image-array">`
       );
     } else if (type == 'video') {
-      $('.image-carousel').html(
+      $('.image-carousel-hover').html(
         `<video src=${
           imgArr[index]
         } class="image-array" autoplay muted loop></video>`
@@ -57,7 +57,7 @@ if (document.querySelectorAll('.fullscreen-landing div span').length > 0) {
       clearInterval(int);
 
       // Fade out carousel with jQuery
-      $('.image-carousel').fadeOut(10);
+      $('.image-carousel-hover').fadeOut(10);
     });
   }
 
@@ -67,7 +67,11 @@ if (document.querySelectorAll('.fullscreen-landing div span').length > 0) {
   // event to close menu on emoji click
   $('.gesture-emoji').click(function () {
     $('.menu-popup').fadeOut();
-    $('.fullscreen-landing').removeClass('fullscreen-landing-blur');
+
+    if (document.querySelectorAll('.fullscreen-landing').length > 0) {
+      $('.fullscreen-landing').removeClass('fullscreen-landing-blur');
+    }
+
   });
 
   // handles menu open
@@ -79,13 +83,19 @@ if (document.querySelectorAll('.fullscreen-landing div span').length > 0) {
       .fadeIn();
 
     // adds class to blur landing content
-    $('.fullscreen-landing').addClass('fullscreen-landing-blur');
+    if (document.querySelectorAll('.fullscreen-landing').length > 0) {
+      $('.fullscreen-landing').addClass('fullscreen-landing-blur');
+    }
 
     // adds click to body to close menu
     e.stopPropagation();
     $('body').on('click', function () {
       $('.menu-popup').fadeOut();
-      $('.fullscreen-landing').removeClass('fullscreen-landing-blur');
+
+      if (document.querySelectorAll('.fullscreen-landing').length > 0) {
+        $('.fullscreen-landing').removeClass('fullscreen-landing-blur');
+      }
+
     });
   }
 }
