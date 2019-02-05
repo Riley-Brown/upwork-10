@@ -479,6 +479,7 @@ footer {
   letter-spacing: normal;
   text-align: center;
   color: #fff;
+
 }
 
 .case-study .footer-content .related {
@@ -491,6 +492,7 @@ footer {
   letter-spacing: 2px;
   text-align: center;
   margin-bottom: 80px;
+  text-decoration: none;
 }
 
 /* mobile styles for case */
