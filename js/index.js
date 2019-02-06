@@ -1,36 +1,44 @@
-// image array for Work hover
-const images = ['img/img-1.jpeg', 'img/img-2.jpeg', 'img/img-3.jpeg'];
-
-// video array for About hover
-const textVidArr = ['video/placeholder-vid.mp4', 'video/placeholder-vid-2.mp4'];
-
-// all span tags on landing for hover event
 if (document.querySelectorAll('.hover-carousel').length > 0) {
+
+  let firstHoverArray = []
+  let secondHoverArray = []
+
+  // gets img or video elements from DOM and populates array vars
+  let populateArray = function () {
+    firstHover = document.querySelector('.first-hover').children;
+    Array.from(firstHover).forEach(child => firstHoverArray.push(child.src))
+
+    secondHover = document.querySelector('.second-hover').children;
+    Array.from(secondHover).forEach(child => secondHoverArray.push(child.src))
+  }
+  populateArray()
+
+
   let hoverElements = document.querySelectorAll('.hover-carousel span');
 
   // event for 1st span
   hoverElements[0].addEventListener('mouseover', function () {
-    onHover(hoverElements[0], textVidArr, 'video', 3000);
+    onHover(hoverElements[0], firstHoverArray, 'video', 3000);
   });
 
   // adds event for 2nd span
   hoverElements[1].addEventListener('mouseover', function () {
-    onHover(hoverElements[1], images, 'img', 700);
+    onHover(hoverElements[1], secondHoverArray, 'img', 700);
   });
 
   function onHover(element, imgArr, type, length) {
     let index = 0;
 
     // Fades in image carousel with jQuery
-    $('.image-carousel-hover').fadeIn(400);
+    $('.hover-carousel-content').fadeIn(400);
 
     // checks element type passed into function
     if (type == 'img') {
-      $('.image-carousel-hover').html(
+      $('.hover-carousel-content').html(
         `<img src=${imgArr[index]} alt="portfolio" class="image-array">`
       );
     } else if (type == 'video') {
-      $('.image-carousel-hover').html(
+      $('.hover-carousel-content').html(
         `<video src=${
           imgArr[index]
         } class="image-array" autoplay muted loop></video>`
@@ -57,7 +65,7 @@ if (document.querySelectorAll('.hover-carousel').length > 0) {
       clearInterval(int);
 
       // Fade out carousel with jQuery
-      $('.image-carousel-hover').fadeOut(10);
+      $('.hover-carousel-content').fadeOut(10);
     });
   }
 
