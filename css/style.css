@@ -86,7 +86,7 @@ a {
   font-stretch: normal;
   line-height: 1.2;
   letter-spacing: normal;
-  text-transform: uppercase;
+  text-transform: capitalize;
 }
 
 @media(max-width: 1400px) {
@@ -153,7 +153,7 @@ a {
 }
 
 /* carousel HOVER styles */
-.image-carousel-hover {
+.hover-carousel-content {
   position: fixed;
   top: 0;
   bottom: 0;
@@ -665,9 +665,10 @@ footer {
   flex-direction: column;
   max-width: 877px;
   margin: auto;
+  align-items: center;
 }
 
-.about footer .footer-content a {
+.about footer .footer-content span a {
   text-decoration: none;
   color: #fff;
   font-size: 4.5rem;
@@ -680,10 +681,12 @@ footer {
   text-transform: uppercase;
 }
 
-.about footer .footer-content a:nth-of-type(1) {
+.about footer .footer-content a {
   font-size: 1.5rem;
   color: #9e673e;
   margin-bottom: 80px;
+  text-decoration: none;
+  text-transform: uppercase;
 }
 
 /* mobile styles for about */
