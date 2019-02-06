@@ -34,6 +34,10 @@ a {
   font-family: Tungsten;
 }
 
+.test {
+  display: none;
+}
+
 /* body style for index page */
 #index {
   background: #000;
@@ -51,6 +55,8 @@ a {
   display: none;
   align-items: center;
   z-index: 2;
+  background-size: cover;
+
 }
 
 .menu-popup .menu-popup-content {
@@ -60,6 +66,9 @@ a {
   width: 90%;
   margin: 0 auto;
   margin-bottom: 4vh;
+  position: relative;
+  z-index: 3;
+  justify-content: flex-start;
 }
 
 .gesture-emoji {
@@ -87,6 +96,7 @@ a {
   line-height: 1.2;
   letter-spacing: normal;
   text-transform: capitalize;
+  max-width: 550px;
 }
 
 @media(max-width: 1400px) {
