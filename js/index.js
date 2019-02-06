@@ -273,10 +273,11 @@ function navItemsHover() {
       Array.from(test).forEach(child => testArray.push(child.src))
       console.log(testArray)
 
-
-
       let index = 0;
-      document.querySelector('.menu-popup').style.background = `url('${testArray[index]}') center center / cover`
+      let menuPopup = document.querySelector('.menu-popup');
+
+      menuPopup.style.background = `url('${testArray[index]}') center center / cover`;
+      menuPopup.style.transition = 'linear 400ms';
 
       let int = setInterval(function () {
         index++
@@ -284,13 +285,14 @@ function navItemsHover() {
         if (index >= test.length) {
           index = 0
         }
-        document.querySelector('.menu-popup').style.background = `url('${testArray[index]}') center center / cover`
+        menuPopup.style.background = `url('${testArray[index]}') center center / cover`
       }, 1000)
 
       item.addEventListener('mouseleave', function () {
-        document.querySelector('.menu-popup').style.background = null
+        menuPopup.style.background = null
+        menuPopup.style.transition = null
         clearInterval(int)
-        console.log('int cleared')
+
       })
     })
 
