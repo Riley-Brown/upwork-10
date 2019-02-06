@@ -255,3 +255,47 @@ if (document.querySelectorAll('.carousel').length > 0) {
     clearInterval(counter);
   });
 }
+
+
+// nav popup menu items hover carousel
+
+function navItemsHover() {
+  let navItems = document.querySelectorAll('.menu-popup-content a')
+
+  navItems.forEach(item => {
+
+    item.addEventListener('mouseenter', function () {
+      console.log(123)
+      let test = document.querySelector(`.test[data-nav="${item.dataset.nav}"]`).children
+
+      let testArray = []
+      // let testArrayPopulate = test.children
+      Array.from(test).forEach(child => testArray.push(child.src))
+      console.log(testArray)
+
+
+
+      let index = 0;
+      document.querySelector('.menu-popup').style.background = `url('${testArray[index]}') center center / cover`
+
+      let int = setInterval(function () {
+        index++
+        console.log(index)
+        if (index >= test.length) {
+          index = 0
+        }
+        document.querySelector('.menu-popup').style.background = `url('${testArray[index]}') center center / cover`
+      }, 1000)
+
+      item.addEventListener('mouseleave', function () {
+        document.querySelector('.menu-popup').style.background = null
+        clearInterval(int)
+        console.log('int cleared')
+      })
+    })
+
+
+  })
+}
+
+navItemsHover()
