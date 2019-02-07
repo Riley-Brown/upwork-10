@@ -312,17 +312,21 @@ function navItemsHover() {
 
       let index = 0;
       let menuPopup = document.querySelector('.menu-popup');
+      let randomNumber = Math.floor(Math.random() * 50);
+      console.log(randomNumber)
 
-      menuPopup.style.background = `url('${testArray[index]}') center center / cover`;
+      menuPopup.style.background = `url('${testArray[index]}') 50% ${randomNumber}% / cover`;
       menuPopup.style.transition = 'linear 400ms';
 
       let int = setInterval(function () {
         index++
         console.log(index)
+        randomNumber = Math.floor(Math.random() * 50);
+        console.log(randomNumber)
         if (index >= test.length) {
           index = 0
         }
-        menuPopup.style.background = `url('${testArray[index]}') center center / cover`
+        menuPopup.style.background = `url('${testArray[index]}') 50% ${randomNumber}% / cover`
       }, 1000)
 
       item.addEventListener('mouseleave', function () {
