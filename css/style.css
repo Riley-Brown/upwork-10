@@ -191,8 +191,6 @@ a {
   left: 0;
   right: 0;
   z-index: -1;
-  /* CHANGE Z INDEX ON HOVER WITH JS */
-  /* display: none; */
   height: 100vh;
   transition: linear 400ms;
 }
