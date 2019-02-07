@@ -15,7 +15,7 @@ if (document.querySelectorAll('.hover-carousel').length > 0) {
       let hoverVideoDiv = document.querySelector('.hover-carousel-content-video video');
       let hoverCarousel = document.querySelector('.hover-carousel'); // hover elements parent container
 
-      if (window.location.pathname == '/') {
+      if (window.location.pathname == '/upwork-10') { // needs to be changed for production
         hoverParent.style.zIndex = '-1'
       } else {
         hoverParent.style.zIndex = '1000'
