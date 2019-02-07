@@ -16,6 +16,26 @@
   padding: 0;
 }
 
+#test {
+  /* height: 100vh;
+  width: 100%; */
+  position: relative;
+
+}
+
+#test img {
+  height: 100vh;
+  width: 100%;
+  object-fit: cover;
+  transition: 400ms linear;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+}
+
 /* global font styles */
 h1,
 h2,
@@ -37,6 +57,11 @@ a {
 .test {
   display: none;
 }
+
+/* .test img,
+ {
+
+} */
 
 /* body style for index page */
 #index {
@@ -169,9 +194,11 @@ a {
   bottom: 0;
   left: 0;
   right: 0;
-  z-index: 1000;
-  display: none;
+  z-index: -1;
+  /* CHANGE Z INDEX ON HOVER WITH JS */
+  /* display: none; */
   height: 100vh;
+  transition: linear 400ms;
 }
 
 .image-array {
@@ -180,12 +207,20 @@ a {
   object-fit: cover;
   overflow: hidden;
   /* display: none; */
+  transition: linear 400ms;
 }
 
 .hover-carousel span {
   position: relative;
   z-index: 10001;
 }
+
+/* .hover-carousel {
+  display: flex;
+  
+  justify-content: space-between;
+  max-width: 6px;
+} */
 
 /* home screen landing styles */
 .fullscreen-landing {
@@ -242,7 +277,7 @@ a {
   font-family: Tungsten;
   margin-right: 25px;
   margin-bottom: 20px !important;
-  display: inline-block;
+  /* display: inline-block; */
 }
 
 .fullscreen-landing div span a {
