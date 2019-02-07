@@ -15,12 +15,12 @@ if (document.querySelectorAll('.hover-carousel').length > 0) {
       let hoverVideoDiv = document.querySelector('.hover-carousel-content-video video');
       let hoverCarousel = document.querySelector('.hover-carousel'); // hover elements parent container
 
-      if (window.location.href.includes('index.html')) {
+      if (window.location.pathname == '/') {
         hoverParent.style.zIndex = '-1'
       } else {
         hoverParent.style.zIndex = '1000'
       }
-
+      console.log(window.location)
       hoverParent.style.display = 'block';
 
       // checks if video or img
@@ -29,6 +29,7 @@ if (document.querySelectorAll('.hover-carousel').length > 0) {
         $('.hover-carousel-content-video video').fadeIn();
         hoverVideoDiv.src = hoverArr[index]
       } else {
+        hoverParent.style.display = 'block'
         hoverParent.style.background = `url('${hoverArr[index]}') center center / cover`;
         hoverParent.style.transition = 'linear 400ms';
       }
@@ -46,42 +47,26 @@ if (document.querySelectorAll('.hover-carousel').length > 0) {
           hoverVideoDiv.src = hoverArr[index]
         } else {
           hoverParent.style.background = `url('${hoverArr[index]}') center center / cover`;
-
         }
       }, hoverSpeed)
 
       hoverCarousel.addEventListener('mouseleave', function () {
         hoverParent.style.transition = null
         hoverParent.style.background = null
-        // hoverVideoDiv.style.display = 'none';
         $('.hover-carousel-content-video video').fadeOut();
         clearInterval(int)
       })
 
       item.addEventListener('mouseleave', function () {
         clearInterval(int)
-        // hoverVideoDiv.style.display = 'none';
         $('.hover-carousel-content-video video').fadeOut();
+        hoverParent.style.zIndex = '-1';
       })
     });
   });
 
-  // let hoverElements = document.querySelectorAll('.hover-carousel span');
-
-  // // event for 1st span
-  // hoverElements[0].addEventListener('mouseover', function () {
-  //   onHover(hoverElements[0], firstHoverArray, 'video', 3000);
-  // });
-
-  // // adds event for 2nd span
-  // hoverElements[1].addEventListener('mouseover', function () {
-  //   onHover(hoverElements[1], secondHoverArray, 'img', 700);
-  // });
-
   function onHover(element, imgArr, type, length) {
     let index = 0;
-
-
 
     // checks element type passed into function
     if (type == 'img') {
