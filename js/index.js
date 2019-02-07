@@ -1,43 +1,69 @@
 if (document.querySelectorAll('.hover-carousel').length > 0) {
 
-  let firstHoverArray = []
-  let secondHoverArray = []
-
-  // gets img or video elements from DOM and populates array vars
-  let populateArray = function () {
-    firstHover = document.querySelector('.first-hover').children;
-    Array.from(firstHover).forEach(child => firstHoverArray.push(child.src))
-
-    secondHover = document.querySelector('.second-hover').children;
-    Array.from(secondHover).forEach(child => secondHoverArray.push(child.src))
-  }
-  populateArray()
-
-
   let hoverElements = document.querySelectorAll('.hover-carousel span');
 
-  // event for 1st span
-  hoverElements[0].addEventListener('mouseover', function () {
-    onHover(hoverElements[0], firstHoverArray, 'video', 3000);
+  hoverElements.forEach(item => {
+    item.addEventListener('mouseenter', function () {
+      let hoverChildren = document.querySelector(`.test[data-hover="${item.dataset.hover}"]`).children;
+
+      let hoverArr = []
+      Array.from(hoverChildren).forEach(child => hoverArr.push(child.src))
+      console.log(hoverArr)
+
+      let index = 0;
+      let hoverContainer = document.querySelector('.hover-carousel-content');
+      let hoverCarousel = document.querySelector('.hover-carousel'); // hover elements parent container
+      hoverContainer.style.display = 'block';
+      hoverContainer.style.background = `url('${hoverArr[index]}') center center / cover`;
+      hoverContainer.style.transition = 'linear 400ms';
+
+      let int = setInterval(function () {
+        index++
+
+        if (index >= hoverChildren.length) {
+          index = 0
+        }
+        hoverContainer.style.background = `url('${hoverArr[index]}') center center / cover`;
+      }, 1000)
+
+      hoverCarousel.addEventListener('mouseleave', function () {
+        hoverContainer.style.transition = null
+        hoverContainer.style.background = null
+        clearInterval(int)
+      })
+
+      item.addEventListener('mouseleave', function () {
+        clearInterval(int)
+      })
+    });
   });
 
-  // adds event for 2nd span
-  hoverElements[1].addEventListener('mouseover', function () {
-    onHover(hoverElements[1], secondHoverArray, 'img', 700);
-  });
+  // let hoverElements = document.querySelectorAll('.hover-carousel span');
+
+  // // event for 1st span
+  // hoverElements[0].addEventListener('mouseover', function () {
+  //   onHover(hoverElements[0], firstHoverArray, 'video', 3000);
+  // });
+
+  // // adds event for 2nd span
+  // hoverElements[1].addEventListener('mouseover', function () {
+  //   onHover(hoverElements[1], secondHoverArray, 'img', 700);
+  // });
 
   function onHover(element, imgArr, type, length) {
     let index = 0;
 
-    // Fades in image carousel with jQuery
-    $('.hover-carousel-content').fadeIn(400);
+
 
     // checks element type passed into function
     if (type == 'img') {
-      $('.hover-carousel-content').html(
-        `<img src=${imgArr[index]} alt="portfolio" class="image-array">`
-      );
+      // $('.hover-carousel-content').html(
+      //   `<img src=${imgArr[index]} alt="portfolio" class="image-array">`
+      // );
+      $('#test img').attr('src', imgArr[index])
     } else if (type == 'video') {
+      // Fades in image carousel with jQuery
+      // $('.hover-carousel-content').fadeIn(400);
       $('.hover-carousel-content').html(
         `<video src=${
           imgArr[index]
@@ -56,7 +82,7 @@ if (document.querySelectorAll('.hover-carousel').length > 0) {
       }
 
       // sets new src every interval
-      document.querySelector('.image-array').src = imgArr[index];
+      document.querySelector('#test img').src = imgArr[index];
     }, length); // dynamic length based on value passed in
 
     // mouse leave event to clear interval and hide carousel
@@ -262,41 +288,80 @@ if (document.querySelectorAll('.carousel').length > 0) {
 function navItemsHover() {
   let navItems = document.querySelectorAll('.menu-popup-content a')
 
+  // navItems.forEach(item => {
+
+  //   item.addEventListener('mouseenter', function () {
+  //     let test = document.querySelector(`.test[data-nav="${item.dataset.nav}"]`).children
+
+  //     let testArray = []
+  //     Array.from(test).forEach(child => testArray.push(child.src))
+  //     console.log(testArray)
+
+  //     let index = 0;
+  //     let menuPopup = document.querySelector('.menu-popup');
+
+  //     menuPopup.style.background = `url('${testArray[index]}') center center / cover`;
+  //     menuPopup.style.transition = 'linear 400ms';
+
+  //     let int = setInterval(function () {
+  //       index++
+  //       console.log(index)
+  //       if (index >= test.length) {
+  //         index = 0
+  //       }
+  //       menuPopup.style.background = `url('${testArray[index]}') center center / cover`
+  //     }, 1000)
+
+  //     item.addEventListener('mouseleave', function () {
+  //       menuPopup.style.background = null
+  //       menuPopup.style.transition = null
+  //       clearInterval(int)
+
+  //     })
+  //   })
+
+
+  // })
+
   navItems.forEach(item => {
-
     item.addEventListener('mouseenter', function () {
-      console.log(123)
-      let test = document.querySelector(`.test[data-nav="${item.dataset.nav}"]`).children
-
-      let testArray = []
-      // let testArrayPopulate = test.children
-      Array.from(test).forEach(child => testArray.push(child.src))
-      console.log(testArray)
-
+      let hoverChildren = document.querySelector(`.test[data-nav="${item.dataset.nav}"]`).children;
+      // console.log(hoverChildren)
+      // let allHoverChildrenImg = document.querySelectorAll('.test img');
+      // let allHoverChildrenVid = document.querySelectorAll('.test video');
+      // let children = Array.from(hoverChildren).forEach(child => {
+      //   child.style.display = 'none';
+      //   console.log(child)
+      // })
+      // console.log(allHoverChildrenVid)
+      hoverChildren[0].style.visibility = 'visible';
+      hoverChildren[0].style.height = '100vh';
       let index = 0;
-      let menuPopup = document.querySelector('.menu-popup');
-
-      menuPopup.style.background = `url('${testArray[index]}') center center / cover`;
-      menuPopup.style.transition = 'linear 400ms';
-
       let int = setInterval(function () {
-        index++
         console.log(index)
-        if (index >= test.length) {
-          index = 0
+        index++
+        console.log(hoverChildren[index])
+
+        if (index >= hoverChildren.length) {
+          index = 0;
         }
-        menuPopup.style.background = `url('${testArray[index]}') center center / cover`
+        let children = Array.from(hoverChildren).forEach(child => {
+          child.style.visibility = 'hidden';
+          child.style.height = '0';
+        })
+        hoverChildren[index].style.visibility = 'visible';
+        hoverChildren[index].style.height = '100vh';
       }, 1000)
 
       item.addEventListener('mouseleave', function () {
-        menuPopup.style.background = null
-        menuPopup.style.transition = null
-        clearInterval(int)
-
+        let children = Array.from(hoverChildren).forEach(child => {
+          child.style.visibility = 'hidden';
+          child.style.height = '0';
+          console.log(child)
+          clearInterval(int)
+        })
       })
     })
-
-
   })
 }
 
