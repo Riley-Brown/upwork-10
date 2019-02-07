@@ -5,35 +5,58 @@ if (document.querySelectorAll('.hover-carousel').length > 0) {
   hoverElements.forEach(item => {
     item.addEventListener('mouseenter', function () {
       let hoverChildren = document.querySelector(`.test[data-hover="${item.dataset.hover}"]`).children;
+      let hoverSpeed = item.dataset.speed;
 
       let hoverArr = []
       Array.from(hoverChildren).forEach(child => hoverArr.push(child.src))
       console.log(hoverArr)
 
       let index = 0;
-      let hoverContainer = document.querySelector('.hover-carousel-content');
+      let hoverParent = document.querySelector('.hover-carousel-content');
+      let hoverVideoDiv = document.querySelector('.hover-carousel-content-video video');
       let hoverCarousel = document.querySelector('.hover-carousel'); // hover elements parent container
-      hoverContainer.style.display = 'block';
-      hoverContainer.style.background = `url('${hoverArr[index]}') center center / cover`;
-      hoverContainer.style.transition = 'linear 400ms';
 
+      hoverParent.style.display = 'block';
+
+      // checks if video or img
+      if (hoverArr[0].includes('/video/')) {
+        // hoverVideoDiv.style.display = 'block';
+        $('.hover-carousel-content-video video').fadeIn();
+        hoverVideoDiv.src = hoverArr[index]
+      } else {
+        hoverParent.style.background = `url('${hoverArr[index]}') center center / cover`;
+        hoverParent.style.transition = 'linear 400ms';
+      }
+
+      // interval to change index
       let int = setInterval(function () {
         index++
 
         if (index >= hoverChildren.length) {
           index = 0
         }
-        hoverContainer.style.background = `url('${hoverArr[index]}') center center / cover`;
-      }, 1000)
+
+        // checks if video or img
+        if (hoverArr[0].includes('/video/')) {
+          hoverVideoDiv.src = hoverArr[index]
+        } else {
+          hoverParent.style.background = `url('${hoverArr[index]}') center center / cover`;
+
+        }
+      }, hoverSpeed)
 
       hoverCarousel.addEventListener('mouseleave', function () {
-        hoverContainer.style.transition = null
-        hoverContainer.style.background = null
+        hoverParent.style.transition = null
+        hoverParent.style.background = null
+        // hoverVideoDiv.style.display = 'none';
+        $('.hover-carousel-content-video video').fadeOut();
         clearInterval(int)
       })
 
       item.addEventListener('mouseleave', function () {
         clearInterval(int)
+        // hoverVideoDiv.style.display = 'none';
+        $('.hover-carousel-content-video video').fadeOut();
       })
     });
   });
