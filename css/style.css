@@ -58,11 +58,6 @@ a {
   display: none;
 }
 
-/* .test img,
- {
-
-} */
-
 /* body style for index page */
 #index {
   background: #000;
@@ -199,6 +194,13 @@ a {
   /* display: none; */
   height: 100vh;
   transition: linear 400ms;
+}
+
+.hover-carousel-content-video video {
+  min-width: 100%;
+  height: 100vh;
+  object-fit: cover;
+  display: none;
 }
 
 .image-array {
