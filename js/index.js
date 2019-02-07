@@ -11,11 +11,12 @@ if (document.querySelectorAll('.hover-carousel').length > 0) {
       Array.from(hoverChildren).forEach(child => hoverArr.push(child.src))
 
       let index = 0;
+      let randomNumber = Math.floor(Math.random() * 50);
       let hoverParent = document.querySelector('.hover-carousel-content');
       let hoverVideoDiv = document.querySelector('.hover-carousel-content-video video');
       let hoverCarousel = document.querySelector('.hover-carousel'); // hover elements parent container
 
-      if (window.location.pathname == '/upwork-10/') { // needs to be changed for production
+      if (window.location.pathname == '/upwork-10/' || '/') { // needs to be changed for production
         hoverParent.style.zIndex = '-1'
       } else {
         hoverParent.style.zIndex = '1000'
@@ -30,14 +31,16 @@ if (document.querySelectorAll('.hover-carousel').length > 0) {
         hoverVideoDiv.src = hoverArr[index]
       } else {
         hoverParent.style.display = 'block'
-        hoverParent.style.background = `url('${hoverArr[index]}') center center / cover`;
+        hoverParent.style.background = `url('${hoverArr[index]}') 50% ${randomNumber}% / cover`;
         hoverParent.style.transition = 'linear 400ms';
       }
+
 
       // interval to change index
       let int = setInterval(function () {
         index++
-
+        randomNumber = Math.floor(Math.random() * 50);
+        console.log(randomNumber)
         if (index >= hoverChildren.length) {
           index = 0
         }
@@ -46,7 +49,7 @@ if (document.querySelectorAll('.hover-carousel').length > 0) {
         if (hoverArr[0].includes('/video/')) {
           hoverVideoDiv.src = hoverArr[index]
         } else {
-          hoverParent.style.background = `url('${hoverArr[index]}') center center / cover`;
+          hoverParent.style.background = `url('${hoverArr[index]}') 50% ${randomNumber}% / cover`;
         }
       }, hoverSpeed)
 
@@ -305,24 +308,21 @@ function navItemsHover() {
 
     item.addEventListener('mouseenter', function () {
       let test = document.querySelector(`.test[data-nav="${item.dataset.nav}"]`).children
-
       let testArray = []
       Array.from(test).forEach(child => testArray.push(child.src))
-      console.log(testArray)
 
       let index = 0;
       let menuPopup = document.querySelector('.menu-popup');
       let randomNumber = Math.floor(Math.random() * 50);
-      console.log(randomNumber)
+
 
       menuPopup.style.background = `url('${testArray[index]}') 50% ${randomNumber}% / cover`;
       menuPopup.style.transition = 'linear 400ms';
 
       let int = setInterval(function () {
         index++
-        console.log(index)
         randomNumber = Math.floor(Math.random() * 50);
-        console.log(randomNumber)
+
         if (index >= test.length) {
           index = 0
         }
