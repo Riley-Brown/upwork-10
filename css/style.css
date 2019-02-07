@@ -143,6 +143,7 @@ a {
 .carousel {
   position: relative;
   overflow: hidden;
+  z-index: 10001;
 }
 
 .carousel-content {
