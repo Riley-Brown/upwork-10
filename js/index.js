@@ -9,12 +9,17 @@ if (document.querySelectorAll('.hover-carousel').length > 0) {
 
       let hoverArr = []
       Array.from(hoverChildren).forEach(child => hoverArr.push(child.src))
-      console.log(hoverArr)
 
       let index = 0;
       let hoverParent = document.querySelector('.hover-carousel-content');
       let hoverVideoDiv = document.querySelector('.hover-carousel-content-video video');
       let hoverCarousel = document.querySelector('.hover-carousel'); // hover elements parent container
+
+      if (window.location.href.includes('index.html')) {
+        hoverParent.style.zIndex = '-1'
+      } else {
+        hoverParent.style.zIndex = '1000'
+      }
 
       hoverParent.style.display = 'block';
 
@@ -311,78 +316,34 @@ if (document.querySelectorAll('.carousel').length > 0) {
 function navItemsHover() {
   let navItems = document.querySelectorAll('.menu-popup-content a')
 
-  // navItems.forEach(item => {
-
-  //   item.addEventListener('mouseenter', function () {
-  //     let test = document.querySelector(`.test[data-nav="${item.dataset.nav}"]`).children
-
-  //     let testArray = []
-  //     Array.from(test).forEach(child => testArray.push(child.src))
-  //     console.log(testArray)
-
-  //     let index = 0;
-  //     let menuPopup = document.querySelector('.menu-popup');
-
-  //     menuPopup.style.background = `url('${testArray[index]}') center center / cover`;
-  //     menuPopup.style.transition = 'linear 400ms';
-
-  //     let int = setInterval(function () {
-  //       index++
-  //       console.log(index)
-  //       if (index >= test.length) {
-  //         index = 0
-  //       }
-  //       menuPopup.style.background = `url('${testArray[index]}') center center / cover`
-  //     }, 1000)
-
-  //     item.addEventListener('mouseleave', function () {
-  //       menuPopup.style.background = null
-  //       menuPopup.style.transition = null
-  //       clearInterval(int)
-
-  //     })
-  //   })
-
-
-  // })
-
   navItems.forEach(item => {
-    item.addEventListener('mouseenter', function () {
-      let hoverChildren = document.querySelector(`.test[data-nav="${item.dataset.nav}"]`).children;
-      // console.log(hoverChildren)
-      // let allHoverChildrenImg = document.querySelectorAll('.test img');
-      // let allHoverChildrenVid = document.querySelectorAll('.test video');
-      // let children = Array.from(hoverChildren).forEach(child => {
-      //   child.style.display = 'none';
-      //   console.log(child)
-      // })
-      // console.log(allHoverChildrenVid)
-      hoverChildren[0].style.visibility = 'visible';
-      hoverChildren[0].style.height = '100vh';
-      let index = 0;
-      let int = setInterval(function () {
-        console.log(index)
-        index++
-        console.log(hoverChildren[index])
 
-        if (index >= hoverChildren.length) {
-          index = 0;
+    item.addEventListener('mouseenter', function () {
+      let test = document.querySelector(`.test[data-nav="${item.dataset.nav}"]`).children
+
+      let testArray = []
+      Array.from(test).forEach(child => testArray.push(child.src))
+      console.log(testArray)
+
+      let index = 0;
+      let menuPopup = document.querySelector('.menu-popup');
+
+      menuPopup.style.background = `url('${testArray[index]}') center center / cover`;
+      menuPopup.style.transition = 'linear 400ms';
+
+      let int = setInterval(function () {
+        index++
+        console.log(index)
+        if (index >= test.length) {
+          index = 0
         }
-        let children = Array.from(hoverChildren).forEach(child => {
-          child.style.visibility = 'hidden';
-          child.style.height = '0';
-        })
-        hoverChildren[index].style.visibility = 'visible';
-        hoverChildren[index].style.height = '100vh';
+        menuPopup.style.background = `url('${testArray[index]}') center center / cover`
       }, 1000)
 
       item.addEventListener('mouseleave', function () {
-        let children = Array.from(hoverChildren).forEach(child => {
-          child.style.visibility = 'hidden';
-          child.style.height = '0';
-          console.log(child)
-          clearInterval(int)
-        })
+        menuPopup.style.background = null
+        menuPopup.style.transition = null
+        clearInterval(int)
       })
     })
   })
