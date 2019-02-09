@@ -180,124 +180,253 @@ if (document.querySelectorAll('.emoji-open').length > 0) {
 
 /* ===== Custom NON-Hover Carousel ===== */
 
-if (document.querySelectorAll('.carousel').length > 0) {
-  let carouselLength = document.querySelectorAll('.carousel .carousel-content img').length;
+// if (document.querySelectorAll('.carousel').length > 0) {
+//   let carouselLength = document.querySelectorAll('.carousel .carousel-content img').length;
 
-  // carousel content element
-  let carouselContent = document.querySelector('.carousel .carousel-content')
+//   // carousel content element
+//   let carouselContent = document.querySelectorAll('.carousel .carousel-content')
 
-  // handles normal carousel transition inverval calculation
-  let count = window.innerWidth;
-  let counterIncrement = window.innerWidth;
-  let counter = setInterval(timer, 3000);
+//   // handles normal carousel transition inverval calculation
+//   let count = window.innerWidth;
+//   let counterIncrement = window.innerWidth;
+//   let counter = setInterval(timer, 3000);
 
-  window.addEventListener('DOMContentLoaded', function () {
-    initialCarouselWidth = window.innerWidth * (carouselLength - 2);
+//   window.addEventListener('DOMContentLoaded', function () {
+//     initialCarouselWidth = window.innerWidth * (carouselLength - 2);
 
-    // sets initial width for carousel 
-    document.querySelector('.carousel-content').style.width = `${initialCarouselWidth}px`;
+//     // sets initial width for carousel 
+//     document.querySelector('.carousel-content').style.width = `${initialCarouselWidth}px`;
 
-    // sets initial transform of carousel to start at index 1
-    document.querySelector('.carousel-content').style.transform = `translateX(${-window.innerWidth}px)`;
-  });
+//     // sets initial transform of carousel to start at index 1
+//     document.querySelector('.carousel-content').style.transform = `translateX(${-window.innerWidth}px)`;
+//   });
 
-  // prevents mobile bugs
-  if (window.innerWidth > 800) {
-    window.addEventListener('resize', function () {
-      // updates variable values based on window width
-      counterIncrement = window.innerWidth;
-      count = window.innerWidth
-      carouselContent.style.width = `${counterIncrement * carouselLength}px`;
-      carouselContent.style.transform = `translateX(${-counterIncrement}px)`;
-    });
+//   // prevents mobile bugs
+//   if (window.innerWidth > 800) {
+//     window.addEventListener('resize', function () {
+//       // updates variable values based on window width
+//       counterIncrement = window.innerWidth;
+//       count = window.innerWidth
+//       carouselContent.style.width = `${counterIncrement * carouselLength}px`;
+//       carouselContent.style.transform = `translateX(${-counterIncrement}px)`;
+//     });
 
+//   }
+
+//   // change image width for smaller screens
+//   if (window.innerWidth < 800) {
+//     window.addEventListener('resize', function () {
+//       document.querySelectorAll('.carousel-content img').forEach(img => {
+//         img.style.height = window.innerHeight + 200 + 'px';
+//         img.style.width = window.innerHeight + 'px';
+//       })
+//     })
+//   }
+
+
+//   function timer() {
+//     count = count + counterIncrement;
+//     carouselContent.style.transform = `translateX(-${count}px)`;
+//     if (count >= (counterIncrement - 2) * (carouselLength - 1)) {
+//       count = counterIncrement;
+//       carouselContent.style.transform = `translateX(${-counterIncrement}px)`;
+//     }
+//   }
+
+//   /* ===== Carousel Control Left ===== */
+//   $('.carousel-control-left').mouseenter(function () {
+//     $('.carousel .carousel-content').css(
+//       'transform',
+//       `translateX(-${count - 100}px)`
+//     );
+
+//     clearInterval(counter);
+//   });
+
+//   $('.carousel-control-left').mouseleave(function () {
+//     $('.carousel .carousel-content').css('transform', `translateX(-${count}px)`);
+//     counter = setInterval(timer, 3000);
+//   });
+
+//   // carousel left click
+//   $('.carousel-control-left').on('click', function () {
+//     count = count - counterIncrement;
+//     $('.carousel .carousel-content').css('transform', `translateX(${-count}px)`);
+//     if (count < counterIncrement) {
+//       count = counterIncrement * (carouselLength - 2);
+//       $('.carousel .carousel-content').css(
+//         'transform',
+//         `translateX(-${count}px)`
+//       );
+//     }
+
+//     clearInterval(counter);
+//   });
+
+
+//   /* ===== Carousel Control Right ===== */
+
+//   // mouse enter effect
+//   $('.carousel-control-right').mouseenter(function () {
+//     $('.carousel .carousel-content').css(
+//       'transform',
+//       `translateX(-${count + 100}px)`
+//     );
+
+//     clearInterval(counter);
+//   });
+
+//   // mouse leave effect
+//   $('.carousel-control-right').mouseleave(function () {
+//     $('.carousel .carousel-content').css('transform', `translateX(-${count}px)`);
+//     counter = setInterval(timer, 3000);
+//   });
+
+//   // click to next img
+//   $('.carousel-control-right').on('click', function () {
+//     count = count + counterIncrement;
+//     $('.carousel .carousel-content').css('transform', `translateX(-${count}px)`);
+//     if (count >= counterIncrement * (carouselLength - 1)) {
+//       count = counterIncrement;
+//       $('.carousel .carousel-content').css(
+//         'transform',
+//         `translateX(-${count}px)`
+//       );
+//     }
+
+//     clearInterval(counter);
+//   });
+// }
+
+/* ===== NEW Custom NON-Hover Carousel ===== */
+// class Carousel {
+//   constructor(element) {
+//     this.element = element;
+//     this.data = this.element.dataset.carousel;
+//     this.carousel = document.querySelector(`.carousel[data-carousel="${this.data}"]`).children;
+//     this.carouselContent = document.querySelectorAll(`.carousel-content`)[this.data - 1];
+//     this.carouselLength = this.carouselContent.children.length
+//     this.speed = this.element.dataset.speed;
+//     this.count = window.innerWidth;
+//     this.counterIncrement = window.innerWidth;
+//     this.carouselArr = []
+//     this.carouselContentArr()
+//     // window.addEventListener('DOMContentLoaded', this.setInitialValues())
+//     this.timer()
+//     this.width = window.innerWidth
+//     this.setValues()
+//   }
+
+//   setValues() {
+//     console.log(this.width)
+//     // let initialCarouselWidth = window.innerWidth * (this.carouselLength - 2);
+//     // this.carouselContent.style.width = `${initialCarouselWidth}px`;
+
+//     console.log(this.carouselContent)
+//     let carouselContent = this.carouselContent;
+//     carouselContent.style.transform = `translateX(-${window.innerWidth}px)`;
+//     window.addEventListener('resize', function () {
+
+//       // carouselContent.style.width = window.innerWidth + 'px'
+
+//       carouselContent.style.transform = `translateX(-${window.innerWidth}px)`;
+//     })
+//   }
+//   carouselContentArr() {
+//     Array.from(this.carouselContent.children).forEach(child => this.carouselArr.push(child.src))
+//     console.log(this.carouselArr)
+//   }
+
+//   timer() {
+//     let count = window.innerWidth
+//     let counterIncrement = window.innerWidth
+//     let carouselLength = this.carouselLength
+//     let carouselContent = this.carouselContent
+
+//     setInterval(function () {
+//       count = count + counterIncrement
+//       if (count >= (counterIncrement - 2) * (carouselLength - 1)) {
+//         count = window.innerWidth
+//       }
+//       carouselContent.style.transform = `translateX(-${count}px)`
+//       console.log(count)
+//     }, this.speed)
+
+
+//   }
+// }
+
+let carousels = document.querySelectorAll('.carousel');
+carousels.forEach(carousel => newCarousel(carousel))
+
+function newCarousel(carousel) {
+  let carouselChildren = document.querySelector(`.carousel[data-carousel="${carousel.dataset.carousel}"]`).children;
+  let speed = carousel.dataset.speed
+  let carouselContent = document.querySelectorAll(`.carousel-content`)[carousel.dataset.carousel - 1];
+  const carouselLength = carouselContent.children.length;
+  let width = window.innerWidth;
+  let count = width;
+  let counterIncrement = width;
+  let int = setInterval(timer, speed)
+
+  // initial transform
+  carouselContent.style.transform = `translateX(-${width}px)`
+
+  function timer() {
+    if (count >= (counterIncrement - 2) * (carouselLength - 2)) {
+      count = 0
+      carouselContent.style.transform = `translateX(-${count}px)`;
+    }
+    count = count + counterIncrement
+    carouselContent.style.transform = `translateX(-${count}px)`;
   }
 
-  // change image width for smaller screens
-  if (window.innerWidth < 800) {
-    window.addEventListener('resize', function () {
-      document.querySelectorAll('.carousel-content img').forEach(img => {
-        img.style.height = window.innerHeight + 200 + 'px';
-        img.style.width = window.innerHeight + 'px';
-      })
+  function carouselClick() {
+    // left click
+    carouselChildren[0].addEventListener('click', function () {
+      count = count - width
+      carouselContent.style.transform = `translateX(-${count}px)`;
+      if (count < counterIncrement) {
+        count = counterIncrement * (carouselLength - 2);
+        carouselContent.style.transform = `translateX(-${count}px)`;
+      }
+    })
+    // right click
+    carouselChildren[1].addEventListener('click', function () {
+      count = count + width
+      carouselContent.style.transform = `translateX(-${count}px)`;
+      if (count >= counterIncrement * (carouselLength - 1)) {
+        count = counterIncrement;
+        carouselContent.style.transform = `translateX(-${count}px)`;
+      }
     })
   }
 
+  function carouselHoverEffect() {
+    // left hover effect events
+    carouselChildren[0].addEventListener('mouseenter', function () {
+      carouselContent.style.transform = `translateX(-${count - 100}px)`;
+      clearInterval(int)
+    });
+    carouselChildren[0].addEventListener('mouseleave', function () {
+      carouselContent.style.transform = `translateX(-${count}px)`;
+      int = setInterval(timer, speed)
+    });
 
-  function timer() {
-    count = count + counterIncrement;
-    carouselContent.style.transform = `translateX(-${count}px)`;
-    if (count >= (counterIncrement - 2) * (carouselLength - 1)) {
-      count = counterIncrement;
-      carouselContent.style.transform = `translateX(${-counterIncrement}px)`;
-    }
+    // right hover effect events
+    carouselChildren[1].addEventListener('mouseenter', function () {
+      carouselContent.style.transform = `translateX(-${count + 100}px)`;
+      clearInterval(int)
+    });
+    carouselChildren[1].addEventListener('mouseleave', function () {
+      carouselContent.style.transform = `translateX(-${count}px)`;
+      int = setInterval(timer, speed)
+    });
   }
 
-  /* ===== Carousel Control Left ===== */
-  $('.carousel-control-left').mouseenter(function () {
-    $('.carousel .carousel-content').css(
-      'transform',
-      `translateX(-${count - 100}px)`
-    );
-
-    clearInterval(counter);
-  });
-
-  $('.carousel-control-left').mouseleave(function () {
-    $('.carousel .carousel-content').css('transform', `translateX(-${count}px)`);
-    counter = setInterval(timer, 3000);
-  });
-
-  // carousel left click
-  $('.carousel-control-left').on('click', function () {
-    count = count - counterIncrement;
-    $('.carousel .carousel-content').css('transform', `translateX(${-count}px)`);
-    if (count < counterIncrement) {
-      count = counterIncrement * (carouselLength - 2);
-      $('.carousel .carousel-content').css(
-        'transform',
-        `translateX(-${count}px)`
-      );
-    }
-
-    clearInterval(counter);
-  });
-
-
-  /* ===== Carousel Control Right ===== */
-
-  // mouse enter effect
-  $('.carousel-control-right').mouseenter(function () {
-    $('.carousel .carousel-content').css(
-      'transform',
-      `translateX(-${count + 100}px)`
-    );
-
-    clearInterval(counter);
-  });
-
-  // mouse leave effect
-  $('.carousel-control-right').mouseleave(function () {
-    $('.carousel .carousel-content').css('transform', `translateX(-${count}px)`);
-    counter = setInterval(timer, 3000);
-  });
-
-  // click to next img
-  $('.carousel-control-right').on('click', function () {
-    count = count + counterIncrement;
-    $('.carousel .carousel-content').css('transform', `translateX(-${count}px)`);
-    if (count >= counterIncrement * (carouselLength - 1)) {
-      count = counterIncrement;
-      $('.carousel .carousel-content').css(
-        'transform',
-        `translateX(-${count}px)`
-      );
-    }
-
-    clearInterval(counter);
-  });
+  carouselHoverEffect()
+  carouselClick()
 }
-
 
 // nav popup menu items hover carousel
 
