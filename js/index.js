@@ -386,19 +386,19 @@ if (document.querySelectorAll('.carousel').length > 0) {
       // left click
       carouselChildren[0].addEventListener('click', function () {
         count = count - width
-        carouselContent.style.transform = `translateX(-${count}px)`;
+        carouselContent.style.transform = `translateX(-${count -100}px)`;
         if (count < counterIncrement) {
           count = counterIncrement * (carouselLength - 2);
-          carouselContent.style.transform = `translateX(-${count}px)`;
+          carouselContent.style.transform = `translateX(-${count - 100}px)`;
         }
       })
       // right click
       carouselChildren[1].addEventListener('click', function () {
         count = count + width
-        carouselContent.style.transform = `translateX(-${count}px)`;
+        carouselContent.style.transform = `translateX(-${count + 100}px)`;
         if (count >= counterIncrement * (carouselLength - 1)) {
           count = counterIncrement;
-          carouselContent.style.transform = `translateX(-${count}px)`;
+          carouselContent.style.transform = `translateX(-${count + 100}px)`;
         }
       })
     }
@@ -445,7 +445,6 @@ function navItemsHover() {
       let index = 0;
       let menuPopup = document.querySelector('.menu-popup');
       let randomNumber = Math.floor(Math.random() * 50);
-
 
       menuPopup.style.background = `url('${testArray[index]}') 50% ${randomNumber}% / cover`;
       menuPopup.style.transition = 'linear 400ms';
