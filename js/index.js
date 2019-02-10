@@ -386,16 +386,30 @@ if (document.querySelectorAll('.carousel').length > 0) {
       // left click
       carouselChildren[0].addEventListener('click', function () {
         count = count - width
-        carouselContent.style.transform = `translateX(-${count -100}px)`;
+        // turns off hover after click for small screens
+        if (width < 992) {
+          carouselContent.style.transform = `translateX(-${count}px)`;
+        } else {
+          carouselContent.style.transform = `translateX(-${count - 100}px)`;
+        }
         if (count < counterIncrement) {
           count = counterIncrement * (carouselLength - 2);
-          carouselContent.style.transform = `translateX(-${count - 100}px)`;
+          if (width < 992) {
+            carouselContent.style.transform = `translateX(-${count}px)`;
+          } else {
+            carouselContent.style.transform = `translateX(-${count - 100}px)`;
+          }
+
         }
       })
       // right click
       carouselChildren[1].addEventListener('click', function () {
         count = count + width
-        carouselContent.style.transform = `translateX(-${count + 100}px)`;
+        if (width < 992) {
+          carouselContent.style.transform = `translateX(-${count}px)`;
+        } else {
+          carouselContent.style.transform = `translateX(-${count + 100}px)`;
+        }
         if (count >= counterIncrement * (carouselLength - 1)) {
           count = counterIncrement;
           carouselContent.style.transform = `translateX(-${count + 100}px)`;
