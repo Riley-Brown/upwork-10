@@ -164,12 +164,18 @@ a {
   }
 }
 
-.carousel-content img,
-.carousel-content video {
+.carousel-content img {
   height: 110vh;
   min-width: 100vw;
   max-width: 100vw;
   object-fit: cover;
+}
+
+.carousel-content video {
+  min-width: 100vw;
+  max-width: 100vw;
+  min-height: 100vh;
+  object-fit: fill;
 }
 
 .carousel .carousel-control-left {
