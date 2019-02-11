@@ -355,6 +355,8 @@ if (document.querySelectorAll('.emoji-open').length > 0) {
 
 //   }
 // }
+
+/* ===== Custom NON-Hover Carousel ===== */
 if (document.querySelectorAll('.carousel').length > 0) {
 
   let carousels = document.querySelectorAll('.carousel');
@@ -369,19 +371,19 @@ if (document.querySelectorAll('.carousel').length > 0) {
     let count = width;
     let counterIncrement = width;
     let int = setInterval(timer, speed)
-    let index = 0;
 
-    window.addEventListener('resize', function () {
-      width = window.innerWidth;
-      count = width
-      counterIncrement = width
-      console.log(width);
-      carouselContent.style.transform = `translateX(-${width}px)`;
-      clearInterval(int)
-      int = setInterval(timer, speed);
-    })
+    if (window.innerWidth > 800) {
+      window.addEventListener('resize', function () {
+        width = window.innerWidth;
+        count = width
+        counterIncrement = width
+        carouselContent.style.transform = `translateX(-${width}px)`;
+        clearInterval(int)
+        int = setInterval(timer, speed);
+      })
+    }
 
-    // initial transform
+    // initial transform to start at index 1
     carouselContent.style.transform = `translateX(-${width}px)`
 
     function timer() {
@@ -389,8 +391,6 @@ if (document.querySelectorAll('.carousel').length > 0) {
         count = 0
         carouselContent.style.transform = `translateX(-${count}px)`;
       }
-      index++
-      console.log('index', index)
       count = count + counterIncrement
       carouselContent.style.transform = `translateX(-${count}px)`;
     }
@@ -412,7 +412,6 @@ if (document.querySelectorAll('.carousel').length > 0) {
           } else {
             carouselContent.style.transform = `translateX(-${count - 100}px)`;
           }
-
         }
       })
       // right click
