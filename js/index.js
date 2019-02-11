@@ -35,7 +35,6 @@ if (document.querySelectorAll('.hover-carousel').length > 0) {
         hoverParent.style.transition = 'linear 400ms';
       }
 
-
       // interval to change index
       let int = setInterval(function () {
         index++
@@ -383,6 +382,26 @@ if (document.querySelectorAll('.carousel').length > 0) {
       })
     }
 
+    if (window.innerWidth < 800) {
+      window.addEventListener('resize', function () {
+        // width = window.innerWidth;
+        // count = width
+        // counterIncrement = width
+        // carouselContent.style.transform = `translateX(-${width}px)`;
+        // clearInterval(int)
+        // int = setInterval(timer, speed);
+        console.log(width, window.innerWidth, width + 200)
+        if (width < window.innerWidth || window.innerWidth < width - 150) {
+          width = window.innerWidth;
+          count = width
+          counterIncrement = width
+          carouselContent.style.transform = `translateX(-${width}px)`;
+          clearInterval(int)
+          int = setInterval(timer, speed);
+        }
+      })
+    }
+
     // initial transform to start at index 1
     carouselContent.style.transform = `translateX(-${width}px)`
 
@@ -399,6 +418,7 @@ if (document.querySelectorAll('.carousel').length > 0) {
       // left click
       carouselChildren[0].addEventListener('click', function () {
         count = count - width
+
         // turns off hover after click for small screens
         if (width < 992) {
           carouselContent.style.transform = `translateX(-${count}px)`;
@@ -456,8 +476,8 @@ if (document.querySelectorAll('.carousel').length > 0) {
   }
 
 }
-// nav popup menu items hover carousel
 
+// nav popup menu items hover carousel
 function navItemsHover() {
   let navItems = document.querySelectorAll('.menu-popup-content a')
 
