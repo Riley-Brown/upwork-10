@@ -2,112 +2,73 @@ if (document.querySelectorAll('.hover-carousel').length > 0) {
 
   let hoverElements = document.querySelectorAll('.hover-carousel span');
 
-  hoverElements.forEach(item => {
-    item.addEventListener('mouseenter', function () {
-      let hoverChildren = document.querySelector(`.test[data-hover="${item.dataset.hover}"]`).children;
-      let hoverSpeed = item.dataset.speed;
+  function hoverCarousel() {
+    hoverElements.forEach(item => {
+      item.addEventListener('mouseenter', function () {
+        let hoverChildren = document.querySelector(`.test[data-hover="${item.dataset.hover}"]`).children;
+        let hoverSpeed = item.dataset.speed;
+        let hoverArr = []
+        Array.from(hoverChildren).forEach(child => hoverArr.push(child.src))
 
-      let hoverArr = []
-      Array.from(hoverChildren).forEach(child => hoverArr.push(child.src))
+        let index = 0;
+        let randomNumber = Math.floor(Math.random() * 50);
+        let hoverParent = document.querySelector('.hover-carousel-content');
+        let hoverVideoDiv = document.querySelector('.hover-carousel-content-video video');
+        let hoverCarousel = document.querySelector('.hover-carousel'); // hover elements parent container
 
-      let index = 0;
-      let randomNumber = Math.floor(Math.random() * 50);
-      let hoverParent = document.querySelector('.hover-carousel-content');
-      let hoverVideoDiv = document.querySelector('.hover-carousel-content-video video');
-      let hoverCarousel = document.querySelector('.hover-carousel'); // hover elements parent container
-
-      if (window.location.pathname == '/upwork-10/' || window.location.pathname == '/' || window.location.pathname == '/index.html') { // needs to be changed for production
-        hoverParent.style.zIndex = '-1'
-      } else {
-        hoverParent.style.zIndex = '1000'
-      }
-      console.log(window.location)
-      hoverParent.style.display = 'block';
-
-      // checks if video or img
-      if (hoverArr[0].includes('/video/')) {
-        // hoverVideoDiv.style.display = 'block';
-        $('.hover-carousel-content-video video').fadeIn();
-        hoverVideoDiv.src = hoverArr[index]
-      } else {
-        hoverParent.style.display = 'block'
-        hoverParent.style.background = `url('${hoverArr[index]}') 50% ${randomNumber}% / cover`;
-        hoverParent.style.transition = 'linear 400ms';
-      }
-
-      // interval to change index
-      let int = setInterval(function () {
-        index++
-        randomNumber = Math.floor(Math.random() * 50);
-        console.log(randomNumber)
-        if (index >= hoverChildren.length) {
-          index = 0
+        if (window.location.pathname == '/upwork-10/' || window.location.pathname == '/' || window.location.pathname == '/index.html') { // needs to be changed for production
+          hoverParent.style.zIndex = '-1'
+        } else {
+          hoverParent.style.zIndex = '1000'
         }
+        console.log(window.location)
+        hoverParent.style.display = 'block';
 
         // checks if video or img
         if (hoverArr[0].includes('/video/')) {
+          $('.hover-carousel-content-video video').fadeIn();
           hoverVideoDiv.src = hoverArr[index]
         } else {
+          hoverParent.style.display = 'block'
           hoverParent.style.background = `url('${hoverArr[index]}') 50% ${randomNumber}% / cover`;
+          hoverParent.style.transition = 'linear 400ms';
         }
-      }, hoverSpeed)
 
-      hoverCarousel.addEventListener('mouseleave', function () {
-        hoverParent.style.transition = null
-        hoverParent.style.background = null
-        $('.hover-carousel-content-video video').fadeOut();
-        clearInterval(int)
-      })
+        // interval to change index
+        let int = setInterval(function () {
+          index++
+          randomNumber = Math.floor(Math.random() * 50);
+          console.log(randomNumber)
+          if (index >= hoverChildren.length) {
+            index = 0
+          }
 
-      item.addEventListener('mouseleave', function () {
-        clearInterval(int)
-        $('.hover-carousel-content-video video').fadeOut();
-        hoverParent.style.zIndex = '-1';
-      })
+          // checks if video or img
+          if (hoverArr[0].includes('/video/')) {
+            hoverVideoDiv.src = hoverArr[index]
+          } else {
+            hoverParent.style.background = `url('${hoverArr[index]}') 50% ${randomNumber}% / cover`;
+          }
+        }, hoverSpeed)
+
+        hoverCarousel.addEventListener('mouseleave', function () {
+          hoverParent.style.transition = null
+          hoverParent.style.background = null
+          $('.hover-carousel-content-video video').fadeOut();
+          clearInterval(int)
+        })
+
+        item.addEventListener('mouseleave', function () {
+          clearInterval(int)
+          $('.hover-carousel-content-video video').fadeOut();
+          hoverParent.style.zIndex = '-1';
+        })
+      });
     });
-  });
+  }
 
-  function onHover(element, imgArr, type, length) {
-    let index = 0;
-
-    // checks element type passed into function
-    if (type == 'img') {
-      // $('.hover-carousel-content').html(
-      //   `<img src=${imgArr[index]} alt="portfolio" class="image-array">`
-      // );
-      $('#test img').attr('src', imgArr[index])
-    } else if (type == 'video') {
-      // Fades in image carousel with jQuery
-      // $('.hover-carousel-content').fadeIn(400);
-      $('.hover-carousel-content').html(
-        `<video src=${
-          imgArr[index]
-        } class="image-array" autoplay muted loop></video>`
-      );
-    }
-
-    // interval to increase array index
-    let int = setInterval(function () {
-      // increase value every interval
-      index++;
-
-      // resets index to 0 if longer than array length
-      if (index >= imgArr.length) {
-        index = 0;
-      }
-
-      // sets new src every interval
-      document.querySelector('#test img').src = imgArr[index];
-    }, length); // dynamic length based on value passed in
-
-    // mouse leave event to clear interval and hide carousel
-    element.addEventListener('mouseleave', function () {
-      index = 0;
-      clearInterval(int);
-
-      // Fade out carousel with jQuery
-      $('.hover-carousel-content').fadeOut(10);
-    });
+  if (window.innerWidth > 768) {
+    hoverCarousel()
   }
 
   // event to open menu on Work span click
@@ -120,7 +81,6 @@ if (document.querySelectorAll('.hover-carousel').length > 0) {
     if (document.querySelectorAll('.fullscreen-landing').length > 0) {
       $('.fullscreen-landing').removeClass('fullscreen-landing-blur');
     }
-
   });
 
   // handles menu open
