@@ -204,6 +204,19 @@ a {
   }
 }
 
+@media(max-width: 600px) {
+  .carousel-content img {
+    height: 50vh;
+    object-fit: cover;
+  }
+
+  .carousel-content video {
+    height: 50vh;
+    max-height: 50vh;
+    min-height: 50vh;
+  }
+}
+
 .carousel .carousel-control-left {
   position: absolute;
   top: 0;
