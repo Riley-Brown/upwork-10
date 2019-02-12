@@ -11,11 +11,6 @@
 
 <body class="case-study">
 
-  <!-- fullscreen gradient until page loads -->
-  <div class="fullscreen-gradient">
-    <img src="spinner.svg" alt="Loading...">
-  </div>
-
   <!-- emoji menu  -->
   <img src="img/gesture-emoji.png" class="gesture-emoji emoji-open" alt="Exit" />
 
@@ -157,8 +152,10 @@
   <!-- fade out fullscreen gradient on page load -->
   <script>
     $(window).on('load', function () {
-      $('.fullscreen-gradient').fadeOut();
+      $('header').css('background', 'url(img/img-1.jpeg) center center / cover')
     })
+
+    // background-image: url('../img/img-1.jpeg');
   </script>
 </body>
 

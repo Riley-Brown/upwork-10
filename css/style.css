@@ -16,7 +16,7 @@
   padding: 0;
 }
 
-.fullscreen-gradient {
+/* .fullscreen-gradient {
   position: fixed;
   top: 0;
   bottom: 0;
@@ -27,7 +27,7 @@
   align-items: center;
   background: linear-gradient(90deg, rgba(3, 211, 211, 1) 35%, rgba(0, 212, 255, 1) 100%);
   z-index: 5;
-}
+} */
 
 #test {
   /* height: 100vh;
@@ -441,7 +441,8 @@ a {
 
 .case-study header {
   min-height: 100vh;
-  background-image: url('../img/img-1.jpeg');
+  background-image: linear-gradient(90deg, rgba(3, 211, 211, 1) 35%, rgba(0, 212, 255, 1) 100%);
+  /* background: url('../img/img-1.jpeg') center center / cover; */
   background-size: cover;
   display: flex;
 }
