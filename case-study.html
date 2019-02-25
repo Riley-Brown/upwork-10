@@ -74,8 +74,9 @@
     <img src="img/person-section-placeholder.jpg" class="full-height full-width" alt="" />
   </section>
 
+
   <!-- carousel testing -->
-  <div class="carousel" data-carousel="1" data-speed="1000">
+  <div class="carousel" data-carousel="1" data-speed="3000">
     <span class="carousel-control-left"></span>
     <span class="carousel-control-right"></span>
     <div class="carousel-content">
@@ -90,22 +91,6 @@
     </div>
   </div>
 
-  <!-- carousel testing -->
-  <div class="carousel" data-carousel="2" data-speed="3000">
-    <span class="carousel-control-left"></span>
-    <span class="carousel-control-right"></span>
-    <div class="carousel-content">
-      <!-- add extra last pic first and extra first pic last for hover effect to work properly  -->
-      <img src="img/img-5.jpg" alt="" />
-      <img src="img/img-1.jpg" alt="" />
-      <img src="img/img-2.jpg" alt="" />
-      <video src="video/placeholder-vid-2.mp4" autoplay muted loop></video>
-      <img src="img/img-3.jpg" alt="" />
-      <img src="img/img-4.jpg" alt="" />
-      <img src="img/img-5.jpg" alt="" />
-      <img src="img/img-1.jpg" alt="" />
-    </div>
-  </div>
 
   <!-- nba section -->
   <section class="nba">
@@ -145,14 +130,14 @@
   </footer>
 
   <!-- js -->
-  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-    crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
   <script src="js/index.js"></script>
 
   <!-- fade out fullscreen gradient on page load -->
   <script>
     $(window).on('load', function () {
-      $('header').css('background', 'url(img/img-1.jpeg) center center / cover')
+      $('header').css('background-image', 'linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.5)), url("img/img-1.jpeg")')
     })
 
     // background-image: url('../img/img-1.jpeg');
